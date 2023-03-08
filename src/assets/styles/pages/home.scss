@@ -24,6 +24,10 @@ body {
   height: 100vh;
   background: url(../images/sidebar-bg.jpg) center no-repeat;
 
+  button {
+    margin-bottom: 20px;
+    width: 100%;
+  }
   &__title {
     font-family: 'Arial';
     font-style: normal;
@@ -136,27 +140,27 @@ body {
       color: #3E464D;
       margin-bottom: 16px;
     }
-    button {
-      background: #001030;
-      border-radius: 12px;
-      padding: 16px 20px;
-      font-family: 'Arial';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 11px;
-      line-height: 130%;
-      /* or 14px */
-
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      margin: auto;
-      display: block;
-      border: none;
-    }
   }
 }
 
+button {
+  background: #001030;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 130%;
+  /* or 14px */
+
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: auto;
+  display: block;
+  border: none;
+}
 
 .popup2 {
   position: fixed;
