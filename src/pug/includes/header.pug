@@ -1,0 +1,36 @@
+header.header
+    .header__left
+        a(href='look').look.header__link
+            span.look__text огляд 360°
+            +svg('look').look__svg
+        .header__line
+        .custom-select(data-lang="desktop")
+            .select-selected УКР
+            .select-items.select-hide
+                a(href='/ru').select-item РУС
+                a(href='/en').select-item ENG
+
+        .header__line
+        a(href='/apartments').header__link квартири
+    a(href='/').header__logo
+      picture
+        source(media="(min-width: 993px)" srcset="assets/images/logo.svg")
+        source(media="(max-width: 992px)" srcset="assets/images/logo-mobile.svg")
+        img(src="assets/images/logo.svg")
+    a(href='tel:0442992203').header__call-mobile
+        +svg('tell')
+    .header__right
+        a(href='/location').header__link локація
+        .header__line
+        .call
+            .call__num
+                +svg('tell')
+                a(href='tel:0442992203').call__phone 044 29-92-203
+            .request
+                a(href='#').request__link.js-form-open Замовити дзвінок
+        .header__line
+        .burger(data-open-menu)
+            span.burger__name Меню
+            .burger__icon
+                span.burger__line
+                span.burger__line

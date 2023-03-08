@@ -1,0 +1,61 @@
+.page-contacts {
+  .footer {
+    background: #1C2029;
+  }
+}
+.contacts {
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  padding: 185px 0 230px;
+  background: #1C2029;
+  .title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 0 0 30px;
+    margin: 33px 0 50px;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      display: inline-block;
+      width: 50px;
+      transform: translateX(-50%);
+      border-bottom: 1px solid rgba(226, 227, 228, 0.3);
+      @include to(576px) {
+        display: none;
+      }
+    }
+    @include to(1440px) {
+      padding: 0 0 20px;
+      margin: 15px 0 40px;
+    }
+    @include to(992px) {
+      padding: 0 0 20px;
+      margin: 36px 0 50px;
+    }
+    @include to(576px) {
+      padding: 0 40px;
+      margin: 20px 0 30px;
+      text-align: left;
+    }
+  }
+  @include to(1440px) {
+    padding: 135px 0 160px;
+  }
+  @include to(992px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 140px 0 160px;
+  }
+  @include to(576px) {
+    padding: 90px 0 110px;
+  }
+}

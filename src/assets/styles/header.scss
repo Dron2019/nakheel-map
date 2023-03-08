@@ -1,0 +1,435 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: var(--header-h);
+  width: 100%;
+  padding: 0 80px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(26, 41, 65, 0.6);
+  z-index: 100;
+  @include to(1440px) {
+    padding: 0 50px;
+  }
+  @include to(992px) {
+    padding: 0;
+  }
+  &__logo {
+    height: 160px;
+    width: 160px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    display: flex;
+    padding: 20px;
+    margin: 0 25px;
+    background: #1A2941;
+    cursor: pointer;
+    picture {
+      width: 100%;
+      height: 100%;
+    }
+    @include to(1440px) {
+      padding: 15px;
+      height: 120px;
+      width: 120px;
+    }
+    @include to(992px) {
+      order: -1;
+      align-self: center;
+      padding: 0;
+      height: 60px;
+      width: 200px;
+      margin: 0 40px;
+      background: none;
+    }
+    @include to(767px) {
+      height: 55px;
+      width: 180px;
+      margin: 0 20px;
+    }
+    @include to(576px) {
+      height: 36px;
+      width: 115px;
+      margin: 0 20px;
+    }
+  }
+  &__link {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    align-self: center;
+    font-family: $default-font;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    overflow: hidden;
+    color: $light;
+    @include to(1440px) {
+      font-size: 14px;
+    }
+    @include to(992px) {
+      display: none;
+    }
+    @include from(1023px) {
+      &:hover:after {
+        transform: translateX(0);
+      }
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      border-top: 1px solid $light;
+      transform: translateX(-100%);
+      transition: transform 0.4s ease-in;
+    }
+  }
+
+  &__left {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    @include to(992px) {
+      padding: 0;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    @include to(992px) {
+      padding: 0;
+    }
+  }
+  &__line {
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: initial;
+    flex: 0 1 80px;
+    &:after {
+      content: '';
+      width: 0;
+      height: 100%;
+      border-left: 1px solid $light;
+    }
+    @include to(992px) {
+      display: none;
+    }
+  }
+
+  &__call-mobile {
+    display: none;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+    background: #CFA46E;
+    border-radius: 50%;
+    svg {
+      width: 11px;
+      height: 18px;
+      fill: #1A2941;
+    }
+    @include to(680px) {
+      display: flex;
+    }
+  }
+}
+
+.look {
+  &__text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $light;
+    @include to(1440px) {
+      font-size: 14px;
+    }
+  }
+  &__svg {
+    width: 23px;
+    height: 11px;
+  }
+}
+
+.call {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  &__num {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    svg {
+      width: 14px;
+      height: 28px;
+      fill: #FCFCFC;
+      @include to(1440px) {
+        width: 9px;
+        height: 18px;
+      }
+      @include to(992px) {
+        width: 11px;
+        height: 25px;
+      }
+    }
+  }
+  &__phone {
+    font-family: $default-font;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1em;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    color: $light;
+    margin: 0 0 0 30px;
+    @include to(1440px) {
+      font-size: 18px;
+      margin: 0 0 0 15px;
+    }
+    @include to(920px) {
+      font-size: 19px;
+      margin: 0 0 0 20px;
+    }
+  }
+  @include to(992px) {
+    margin-right: min(vw(50, 768), 50px);
+  }
+  @include to(680px) {
+    display: none;
+  }
+}
+.request {
+  flex-shrink: 0;
+  margin-top: 3px;
+  padding: 0 0 0 45px;
+  @include to(1440px) {
+    padding: 0 0 0 25px;
+  }
+  @include to(992px) {
+    padding: 0 0 0 32px;
+  }
+  a {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1em;
+    text-align: center;
+    letter-spacing: 0.07em;
+    text-decoration-line: none;
+    text-transform: lowercase;
+    color: $light;
+    border-bottom: 1px solid $light;
+    @include to(1440px) {
+      font-size: 14px;
+    }
+    @include to(992px) {
+      font-size: 15px;
+    }
+  }
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  font-family: $default-font;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $light;
+  cursor: pointer;
+  @include to(1440px) {
+    font-size: 14px;
+  }
+  @include to(992px) {
+    height: var(--header-h);
+    justify-content: center;
+    padding: 0 40px;
+    font-size: 18px;
+    background: #1A2941;
+  }
+  @include to(576px) {
+    padding: 0 15px;
+    font-size: 11px;
+    background: #1A2941;
+  }
+  @include from(1023px) {
+    &:hover {
+      .burger__line:nth-child(2) {
+        transform: translateX(100%);
+      }
+    }
+  }
+  &__icon {
+    display: inline-block;
+  }
+  &__line {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 2px;
+    background: $light;
+    margin-top: 15px;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(.7,0,.2,1);
+    @include to(1440px) {
+      margin-top: 10px;
+    }
+    &:last-child {
+      width: 50%;
+      margin-top: 10px;
+      @include to(1440px) {
+        margin-top: 7px;
+      }
+    }
+  }
+}
+
+.lang {
+  border: none;
+  background: none;
+}
+
+
+/* The container must be positioned relative: */
+.custom-select {
+  width: 91px;
+  flex-shrink: 0;
+  position: relative;
+  font-family: $default-font;
+  &[data-lang="desktop"] {
+    visibility: visible;
+    @include to(576px) {
+      visibility: hidden;
+      pointer-events: none;
+      position: absolute;
+    }
+  }
+  &[data-lang="mobile"] {
+    visibility: hidden;
+    position: absolute;
+    @include to(992px) {
+      visibility: visible;
+      position: relative;
+    }
+  }
+  @include to(1440px) {
+    width: 77px;
+  }
+  @include to(992px) {
+    margin-right: 20px;
+  }
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 16px;
+  right: 16px;
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  transform-origin: 25% 25%;
+  border: 1px solid transparent;
+  border-color: #fff transparent transparent #fff;
+  @include to(1440px) {
+    border-width: 2px;
+    width: 10px;
+    height: 10px;
+  }
+  @include to(992px) {
+    right: 5px;
+  }
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  transform: rotate(225deg);
+}
+
+/* style the items (options), including the selected item: */
+.select-items a,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: rgba(0, 0, 0, 0.1) transparent transparent transparent;
+  cursor: pointer;
+}
+
+.select-selected {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  @include to(1440px) {
+    font-size: 14px;
+  }
+  @include to(992px) {
+    font-size: 18px;
+  }
+  @include to(576px) {
+    font-size: 12px;
+  }
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: rgba(26, 41, 65, 0.6);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 3px;
+  text-decoration: none;
+  color: $light;
+  font-size: 18px;
+  @include to(1440px) {
+    font-size: 14px;
+  }
+  @include to(992px) {
+    font-size: 18px;
+  }
+
+  @include to(576px) {
+    font-size: 12px;
+  }
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+.select-items a:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}

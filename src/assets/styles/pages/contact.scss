@@ -1,0 +1,185 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  @include to(992px) {
+    margin: 0 auto;
+    width: 490px;
+  }
+  @include to(576px) {
+    width: 240px;
+  }
+  &__title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.4em;
+    color: #CFA46E;
+    @include to(1440px) {
+      font-size: 16px;
+    }
+    @include to(992px) {
+      font-size: 20px;
+    }
+    @include to(576px) {
+      font-size: 12px;
+    }
+  }
+  &__desc {
+    margin-top: 40px;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4em;
+    color: #FFFFFF;
+    @include to(1440px) {
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 1.2em;
+    }
+    @include to(992px) {
+      margin-top: 40px;
+      font-size: 24px;
+      line-height: 1.4em;
+    }
+    @include to(576px) {
+      margin-top: 15px;
+      font-size: 13px;
+      line-height: 1.4em;
+    }
+  }
+  &__link {
+    margin-top: 40px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    white-space: nowrap;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1em;
+    color: #CFA46E;
+    @include to(1440px) {
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+    @include to(992px) {
+      margin-top: 40px;
+      font-size: 24px;
+      line-height: 1.4em;
+    }
+    @include to(576px) {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    &__arrow {
+      display: flex;
+      width: 70px;
+      height: 13px;
+      margin: 0 0 0 50px;
+      svg {
+        height: 100%;
+        fill: #CFA46E;
+      }
+      @include to(1440px) {
+        width: 50px;
+        height: 9px;
+        margin: 0 0 0 20px;
+      }
+      @include to(992px) {
+        width: 50px;
+        height: 9px;
+        margin: 0 0 0 30px;
+      }
+      @include to(576px) {
+        width: 34px;
+        height: 6px;
+        margin: 0 0 0 20px;
+      }
+    }
+  }
+  &__sales {
+    margin-top: 60px;
+    width: min-content;
+    @include to(576px) {
+      margin-top: 30px;
+    }
+  }
+  &__phone {
+    margin-top: 40px;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4em;
+    color: #FFFFFF;
+    @include to(1440px) {
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 1.2em;
+    }
+    @include to(992px) {
+      margin-top: 40px;
+      font-size: 24px;
+      line-height: 1.4em;
+    }
+    @include to(576px) {
+      margin-top: 15px;
+      font-size: 13px;
+    }
+  }
+  &__mail {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4em;
+    color: #FFFFFF;
+    @include to(1440px) {
+      margin-top: 10px;
+      font-size: 20px;
+      line-height: 1.2em;
+    }
+    @include to(992px) {
+      font-size: 24px;
+      line-height: 1.4em;
+    }
+    @include to(576px) {
+      margin-top: 5px;
+      font-size: 13px;
+    }
+  }
+  &__work-time {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4em;
+    color: #FCFCFC;
+    @include to(1440px) {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    @include to(992px) {
+      margin-top: 40px;
+      font-size: 24px;
+    }
+    @include to(576px) {
+      margin-top: 15px;
+      font-size: 13px;
+    }
+  }
+}
+
+.form {
+  width: 550px;
+  @include to(1440px) {
+    width: 400px;
+  }
+  @include to(1080px) {
+    width: 340px;
+  }
+  @include to(992px) {
+    margin: 60px auto 0;
+    width: 490px;
+  }
+  @include to(576px) {
+    width: 240px;
+  }
+}

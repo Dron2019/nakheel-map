@@ -1,0 +1,75 @@
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Kонтакти'
+    var id_page = 'page-contacts'
+    var class_page = 'page-contacts'
+    // var breadcrumbsBtn = 'filter'
+    var breadcrumbsSubitem = [
+      {
+        label: 'Contacts',
+        link: pagesLink[0].contacts
+      }
+    ]
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+  link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/header.js')
+block content
+  .contacts
+    include ../includes/breadcrumbs.pug
+    h1.title контакти
+    .contact
+      .contact__location
+        .contact__title Розташування:
+        .contact__desc м. Київ, Оболонський район,<br> пр-т Степана Бандрери, 30
+        a(href="").contact__link
+          span Показати на Google Maps
+          .contact__link__arrow
+            +svg('arrow')
+      .contact__sales
+        .contact__title Відділ продажів:
+        .contact__phone 044 555-55-55
+        .contact__mail info@beregresidence.com
+        .contact__work-time
+          span Пн-пт: 09:00-19:00
+          span Сб-вс: 10:00-18:00
+
+    .form
+      h5.form-label.home-contact--width Залишились питання?
+      form(data-home-contact autocomplete="off").home-contact--width
+        .form-field.form-field-input(data-field-input data-field-name data-status="field--inactive")
+          input(type='text' name="name" placeholder="Ім’я:").form-field__input
+          .form-field-message Ваше ім’я
+          .input-message(data-input-message)
+
+        .form-field.disabled.form-field-input(data-field-input data-field-phone data-status="field--inactive")
+          input(type='text' name="phone" placeholder="Телефон:").form-field__input
+          .form-field-message Ваш телефон
+          .mask-absolute.js-mask-absolute
+          .input-message(data-input-message)
+
+        .form-textarea
+          textarea(placeholder="Повідомлення:")
+          .form-field-message Введіть ваше повідомлення
+
+        .form-btn-wrap.df.jcsb.aic
+          button( class="main-button home-contact-btn--size" type="submit" data-btn-submit="data-btn-submit")
+            span.main-button__text(data-btn-submit-text="data-btn-submit-text") Надіслати
+            .main-button__arrow
+              +svg('arrow')
+
+      //include ../components/form/form.pug
+
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

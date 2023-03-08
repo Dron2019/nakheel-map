@@ -1,0 +1,80 @@
+-
+  var menu1 = [
+    ['Головна', 'index.html'],
+    ['Галерея', 'gallery.html'],
+    ['Live камера', 'camera.html'],
+    ['Стан будівництва', 'construction.html'],
+    ['Новини', 'news.html'],
+    ['Контакти', 'contacts.html'],
+  ]
+  var menu2 = [
+    ['Концепція', 'concept.html'],
+    ['Локація та інфраструктура', 'location.html'],
+    ['Тераса', 'terrace.html'],
+    ['Архітектура та технології', '404.html'],
+    ['Безпека', 'security.html'],
+    ['Документи', 'documents.html'],
+    ['Девелопер', 'builder.html']
+  ];
+  var menu3 = [
+    ['Огляд 360', 'view.html'],
+    ['Візуальний підбір', 'genplan.html'],
+    ['План поверху', 'floor.html'],
+    ['1-кімнатні', 'flat.html?room=1'],
+    ['3-кімнатні', 'flat.html?room=3'],
+    ['Характеристики квартир', 'parameters.html'],
+    ['Умови придбання', 'conditions.html']
+  ];
+.menu-wrap(data-menu data-disable-page-scroll)
+  .menu
+    .menu__top
+      .menu__social
+        a(href="https://www.facebook.com/" target="_blank") facebook
+        a(href="https://www.instagram.com/" target="_blank") instagram
+        a(href="https://www.youtube.com/" target="_blank") youtube
+      .menu__logo.header__logo
+        picture
+          source(media="(min-width: 993px)" srcset="assets/images/logo.svg")
+          source(media="(max-width: 992px)" srcset="assets/images/logo-mobile.svg")
+          img(src="assets/images/logo.svg")
+      .menu__right
+        .custom-select(data-lang="mobile")
+          .select-selected УКР
+          .select-items.select-hide
+            a(href='/ru').select-item РУС
+            a(href='/en').select-item ENG
+        .call
+          .call__num
+            +svg('tell')
+            a(href='tel:0442992203').call__phone 044 29-92-203
+          .request
+            a(href='#').request__link.js-form-open Замовити дзвінок
+        .menu__close(data-close-menu)
+          span Закрити
+          .menu__close-icon
+            span
+            span
+
+    .menu__section-left
+      .menu__section.menu__section-big
+        ul
+          each el in menu1
+            li
+              a(href=el[1] data-animation1)=el[0]
+    .menu__section-right
+      .menu__section
+        .menu__title(data-animation2) Про BEREG Residence
+        ul
+          each el in menu2
+            li
+              a(href=el[1] data-animation2)= el[0]
+      .menu__section
+        .menu__title(data-animation3) Квартири
+        ul
+          each el in menu3
+            li
+              a(href=el[1] data-animation3)= el[0]
+    .menu__social.menu__social-mobile
+      a(href="https://www.facebook.com/" target="_blank") facebook
+      a(href="https://www.instagram.com/" target="_blank") instagram
+      a(href="https://www.youtube.com/" target="_blank") youtube

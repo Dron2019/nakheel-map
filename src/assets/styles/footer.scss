@@ -1,0 +1,97 @@
+.page__footer-wrapper{
+
+}
+.footer {
+  position: relative;
+  margin: -1px 0 0;
+  width: 100%;
+  height: 114px;
+  padding: 0 160px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: 50;
+  @include to(1440px) {
+    height: 80px;
+    padding: 0 110px;
+  }
+  @include to(992px) {
+    height: 85px;
+    padding: 0 40px;
+  }
+  @include to(680px) {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: auto auto;
+    height: 60px;
+    padding: 0 20px;
+  }
+  &-copy {
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1em;
+    color: #B8B8B8;
+    @include to(1440px) {
+      font-size: 12px;
+    }
+    @include to(992px) {
+      font-size: 15px;
+    }
+    @include to(576px) {
+      margin-top: 0;
+      font-size: 10px;
+    }
+  }
+  &-dev {
+    margin-top: 10px;
+    display: flex;
+    font-family: $default-font;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1em;
+    &__text {
+      color: #C1C1C1;
+    }
+    &__link {
+      color: #CFA46E;
+      text-decoration: underline;
+      margin-left: 5px;
+    }
+    @include to(1440px) {
+      font-size: 12px;
+    }
+    @include to(992px) {
+      font-size: 15px;
+    }
+    @include to(576px) {
+      order: 1;
+      font-size: 10px;
+    }
+  }
+  &-social {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    grid-column: 2;
+    grid-row: 1 /span 2;
+    @include to(680px) {
+      position: static;
+      transform: none;
+    }
+    & > * {
+      margin: 0 20px;
+      @include to(1440px) {
+        margin: 0 20px;
+      }
+      @include to(992px) {
+        margin: 0 15px;
+      }
+      @include to(576px) {
+        margin: 0 7.5px;
+      }
+    }
+  }
+}
