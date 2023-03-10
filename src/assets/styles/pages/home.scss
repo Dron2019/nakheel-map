@@ -20,11 +20,14 @@ body {
 
 .sidebar {
   .title {
-    font-family: 'Times New Roman';
+    font-family: 'Nakheel-Text';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 160px;
     line-height: 80%;
+    align-items: flex-end;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
   }
   &__dubai {
     margin-bottom: 40px;
@@ -32,13 +35,13 @@ body {
   position: fixed;
   left: 50px;
   top: 50px;
-  width: 250px;
-  padding: 27px;
+  // width: 250px;
   height: 100vh;
   // background: url(../images/sidebar-bg.jpg) center no-repeat;
-
+  text-align: left;
   button {
     margin-bottom: 20px;
+    margin-left: 0;
   }
   &__title {
     font-family: 'Arial';
@@ -61,6 +64,8 @@ body {
   &__qr {
     border-radius: 40px;
     margin-bottom: 27px;
+    width: 196px;
+    height: 196px;
   }
   &__text {
     background: #005776;
@@ -123,7 +128,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     div {
-      font-family: 'Arial';
+      font-family: 'Nakheel-Text';
       font-style: normal;
       font-weight: 400;
       font-size: 20px;
@@ -137,7 +142,7 @@ body {
       margin-bottom: 4px;
     }
     p {
-      font-family: 'Arial';
+      font-family: 'Nakheel-Text';
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -159,11 +164,11 @@ button {
   background: #001030;
   border-radius: 12px;
   padding: 16px 20px;
-  font-family: 'Arial';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 130%;
+  font-family: 'Nakheel-Text';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
   /* or 14px */
 
   letter-spacing: 0.05em;
@@ -218,7 +223,7 @@ button {
     opacity: 1;
   }
   &__title {
-    font-family: 'Arial';
+    font-family: 'Nakheel-Text';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -248,33 +253,33 @@ button {
   bottom: 50px;
   width: 400px;
   &__title {
-    font-family: 'Arial';
+    font-family: 'Nakheel-Text';
     font-style: normal;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 120%;
-    /* or 34px */
-
+    font-size: 32px;
+    line-height: 100%;
+    /* or 32px */
+    
     letter-spacing: -0.02em;
     text-transform: uppercase;
-
-/* 3D colours/Black */
-
-color: #212121;
+    
+    /* 3D colours/Black */
+    
+    color: #212121;
 margin-bottom: 20px;
   }
   &__text {
-    font-family: 'Arial';
+    font-family: 'Nakheel-Text';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 130%;
-    /* or 21px */
-
+    font-size: 20px;
+    line-height: 120%;
+    /* or 24px */
+    
     letter-spacing: -0.02em;
-
+    
     /* 3D colours/Black */
-
+    
     color: #212121;
     margin-bottom: 20px;
   }

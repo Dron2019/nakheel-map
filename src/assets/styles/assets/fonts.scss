@@ -1,3 +1,23 @@
-@include font-face("gilroy", "../fonts/gilroyRegular/Gilroy-Regular", 400);
-@include font-face("gilroy", "../fonts/gilroyMedium/Gilroy-Medium", 500);
-@include font-face("gilroy", "../fonts/gilroySemiBold/Gilroy-SemiBold", 600);
+@include font-face("Nakheel-Text", "../fonts/Nakheel-TextRegular", 400);
+@include font-face("Nakheel-Text", "../fonts/Nakheel-TextBold", 700);
+@include font-face("Nakheel-Headline", "../fonts/Nakheel-HeadlineRegular", 400);
+@include font-face("Nakheel-Headline", "../fonts/Nakheel-HeadlineBold", 700);
+
+
+@font-face {
+	font-family: 'Nakheel-Text';
+	font-display: swap;
+	src: 
+		url("../fonts/Nakheel-TextRegular.ttf") format('truetype');
+		font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Nakheel-Text';
+	font-display: swap;
+	src: 
+		url("../fonts/Nakheel-TextBold.ttf") format('truetype');
+		font-weight: 700;
+	font-style: normal;
+}
