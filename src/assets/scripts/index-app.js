@@ -60,14 +60,17 @@ document.body.addEventListener('click',function(evt){
   popup.querySelector('button').dataset.text = data.pdf_text;
 
 
-  const { width } = popup.getBoundingClientRect();
+  const { width,height } = popup.getBoundingClientRect();
 
   const { top, left } = target.getBoundingClientRect();
   
   const leftOffset = Math.min(left, window.innerWidth - width / 2);
+  const topOffset = Math.min(top, window.innerHeight - height / 2);
+
+  console.log(topOffset, height/2);
 
   popup.style.left = Math.max(leftOffset, width/2)+'px';
-  popup.style.top = top+'px';
+  popup.style.top = Math.max(topOffset, height)+'px';
 
   popup.classList.add('visible');
 

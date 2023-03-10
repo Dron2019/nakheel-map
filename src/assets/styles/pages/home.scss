@@ -9,7 +9,7 @@ body {
 }
 
 .map {
-  width: calc(100% - 250px);
+  width: calc(100%);
   // background-color: rebeccapurple;
   svg {
     display: block;
@@ -19,14 +19,26 @@ body {
 }
 
 .sidebar {
+  .title {
+    font-family: 'Times New Roman';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 160px;
+    line-height: 80%;
+  }
+  &__dubai {
+    margin-bottom: 40px;
+  }
+  position: fixed;
+  left: 50px;
+  top: 50px;
   width: 250px;
   padding: 27px;
   height: 100vh;
-  background: url(../images/sidebar-bg.jpg) center no-repeat;
+  // background: url(../images/sidebar-bg.jpg) center no-repeat;
 
   button {
     margin-bottom: 20px;
-    width: 100%;
   }
   &__title {
     font-family: 'Arial';
@@ -160,6 +172,8 @@ button {
   margin: auto;
   display: block;
   border: none;
+  width: 196px;
+  white-space: nowrap;
 }
 
 .popup2 {
@@ -222,5 +236,49 @@ button {
     top: 10px;
     width: 15px;
     height: 15px;
+  }
+}
+
+.description {
+  background-color: #FFFFFF;
+  border-radius: 40px;
+  padding: 40px 40px 40px 47px;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 400px;
+  &__title {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    /* or 34px */
+
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+
+/* 3D colours/Black */
+
+color: #212121;
+margin-bottom: 20px;
+  }
+  &__text {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    /* or 21px */
+
+    letter-spacing: -0.02em;
+
+    /* 3D colours/Black */
+
+    color: #212121;
+    margin-bottom: 20px;
+  }
+  button {
+    width: 100%;
   }
 }
