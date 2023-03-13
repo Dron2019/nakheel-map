@@ -67,7 +67,6 @@ document.body.addEventListener('click',function(evt){
   const leftOffset = Math.min(left, window.innerWidth - width / 2);
   const topOffset = Math.min(top, window.innerHeight - height / 2);
 
-  console.log(topOffset, height/2);
 
   popup.style.left = Math.max(leftOffset, width/2)+'px';
   popup.style.top = Math.max(topOffset, height)+'px';
@@ -89,6 +88,8 @@ document.body.addEventListener('click',function(evt){
   if (!target) return;
 
   const popup = document.querySelector('.popup2');
+  popup.style.height = target.dataset.height ? target.dataset.height : '';
+
 
   PDFObject.embed(target.dataset.url, "[data-pdf]");
   // popup.querySelector('iframe').src = target.dataset.url;
