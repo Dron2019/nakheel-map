@@ -37,6 +37,9 @@ const pinData = {
   }
 }
 
+
+let timeoutClosing = 0;
+
 document.body.addEventListener('click',function(evt){
   const target = evt.target.closest('.popup__close');
   if (!target) return;
@@ -91,12 +94,37 @@ document.body.addEventListener('click',function(evt){
   popup.style.height = target.dataset.height ? target.dataset.height : '';
 
 
-  PDFObject.embed(target.dataset.url, "[data-pdf]");
+  PDFObject.embed(target.dataset.url, "[data-pdf]", {
+    forceIframe: true,
+  });
+
+  console.log();
   // popup.querySelector('iframe').src = target.dataset.url;
 
   // popup.querySelector('iframe').contentWindow.location.reload();
   popup.querySelector('.popup2__title').textContent = target.dataset.text;
   popup.classList.add('visible');
 
+});
+
+document.body.addEventListener('click',function(evt){
+  clearTimeout(timeoutClosing);
+  addTimeout();
+});
+
+function closePopups() {
+  document.querySelectorAll('.popup2, .popup').forEach(el => {
+    el.classList.remove('visible');
+  })
+}
+
+function addTimeout() {
+  timeoutClosing = setTimeout(closePopups, 1000 * 120);
+}
+
+
+window.addEventListener('myevent',function(evt){
+
+  console.log('EVENT');
 });
 

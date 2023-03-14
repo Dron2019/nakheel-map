@@ -22,7 +22,7 @@ block content
       </svg>
     button(data-url="./static/nyc-nakheel-brochure.pdf") Discover
     +img('sidebar-qrcode.jpg').sidebar__qr
-    button() Media
+    button(data-url="./static/nakheel-media.pdf") Media
   div.description
     div.description__title Iconic Developments in Dubai
     p.description__text Together spanning more than 15,000 hectares, Nakheel’s master developments in prime locations across Dubai provide homes for over 300,000 people. Nakheel’s waterfront projects, including the world famous and award-winning Palm Jumeirah, have added more than 300 kilometres to Dubai’s original 70km coastline, paving the way for the development of hundreds of seafront homes, resorts, hotels and attractions.
@@ -178,9 +178,10 @@ block content
       button Discover
     img.popup__qr
   .popup2
-    <svg class="popup2__close" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7.5 6.08579L13.2929 0.292893C13.6834 -0.0976311 14.3166 -0.0976311 14.7071 0.292893C15.0976 0.683418 15.0976 1.31658 14.7071 1.70711L8.91421 7.5L14.7071 13.2929C15.0976 13.6834 15.0976 14.3166 14.7071 14.7071C14.3166 15.0976 13.6834 15.0976 13.2929 14.7071L7.5 8.91421L1.70711 14.7071C1.31658 15.0976 0.683417 15.0976 0.292893 14.7071C-0.0976313 14.3166 -0.0976313 13.6834 0.292893 13.2929L6.08579 7.5L0.292893 1.70711C-0.0976313 1.31658 -0.0976313 0.683418 0.292893 0.292893Z" fill="#001030"/>
-      </svg>
+    button.popup2__close 
+      <svg  width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7.5 6.08579L13.2929 0.292893C13.6834 -0.0976311 14.3166 -0.0976311 14.7071 0.292893C15.0976 0.683418 15.0976 1.31658 14.7071 1.70711L8.91421 7.5L14.7071 13.2929C15.0976 13.6834 15.0976 14.3166 14.7071 14.7071C14.3166 15.0976 13.6834 15.0976 13.2929 14.7071L7.5 8.91421L1.70711 14.7071C1.31658 15.0976 0.683417 15.0976 0.292893 14.7071C-0.0976313 14.3166 -0.0976313 13.6834 0.292893 13.2929L6.08579 7.5L0.292893 1.70711C-0.0976313 1.31658 -0.0976313 0.683418 0.292893 0.292893Z" fill="#001030"/>
+        </svg>
     .popup2__title Palm beach Towers Presentation
     .popup2__frame(data-pdf scrolling="auto" type="application/pdf")
 
