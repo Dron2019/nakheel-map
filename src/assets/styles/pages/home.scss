@@ -33,12 +33,14 @@ body {
     margin-bottom: 40px;
   }
   position: fixed;
-  left: 50px;
-  top: 50px;
+  right: 50px;
+  bottom: 50px;
   // width: 250px;
-  height: 100vh;
+  // height: 100vh;
   // background: url(../images/sidebar-bg.jpg) center no-repeat;
   text-align: left;
+  display: flex;
+  gap: 50px;
   button {
     margin-bottom: 20px;
     margin-left: 0;
@@ -62,7 +64,7 @@ body {
   }
 
   &__qr {
-    border-radius: 40px;
+    // border-radius: 40px;
     margin-bottom: 27px;
     width: 196px;
     height: 196px;
@@ -119,7 +121,7 @@ body {
 
   &__img,
   &__qr {
-    border-radius: 40px;
+    // border-radius: 40px;
     width: 196px;
     height: 196px;
     flex-shrink: 0;
@@ -169,7 +171,7 @@ body {
 
 button {
   background: #001030;
-  border-radius: 12px;
+  // border-radius: 12px;
   padding: 16px 20px;
   font-family: 'Nakheel-Text';
     font-style: normal;
@@ -181,7 +183,7 @@ button {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #FFFFFF;
-  margin: auto;
+  // margin: auto;
   display: block;
   border: none;
   width: 196px;
@@ -255,18 +257,20 @@ button {
     left: -50px;
     background: white;
     padding: 8px;
-    border-radius: 0;
+    // border-radius: 0;
   }
 }
 
 .description {
-  background-color: #FFFFFF;
-  border-radius: 40px;
-  padding: 40px 40px 40px 47px;
+  // background-color: #FFFFFF;
+  // border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
   position: fixed;
-  right: 50px;
-  bottom: 50px;
+  left: 50px;
+  top: 50px;
   width: 400px;
+  color: #fff;
   &__title {
     font-family: 'Nakheel-Text';
     font-style: normal;
@@ -280,7 +284,7 @@ button {
     
     /* 3D colours/Black */
     
-    color: #212121;
+    color: #fff;
 margin-bottom: 20px;
   }
   &__text {
@@ -295,10 +299,20 @@ margin-bottom: 20px;
     
     /* 3D colours/Black */
     
-    color: #212121;
+    color: #fff;
     margin-bottom: 20px;
   }
   button {
     width: 100%;
   }
+}
+
+
+.logo-group {
+  display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    align-content: flex-end;
+    gap: 8px;
 }
