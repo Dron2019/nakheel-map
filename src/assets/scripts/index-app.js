@@ -43,6 +43,10 @@ let timeoutClosing = 0;
 
 
 document.body.addEventListener('click',function(evt){
+  if (evt.target.closest('.popup') === null) {
+    document.querySelector('.popup').classList.remove('visible');
+    return;
+  }
   const target = evt.target.closest('.popup__close');
   if (!target) return;
 
@@ -81,9 +85,12 @@ document.body.addEventListener('click',function(evt){
 });
 
 document.body.addEventListener('click',function(evt){
+  if (evt.target.closest('.popup2') === null) {
+    document.querySelector('.popup2').classList.remove('visible');
+    return;
+  }
   const target = evt.target.closest('.popup2__close');
   if (!target) return;
-
   document.querySelector('.popup2').classList.remove('visible');
 
 });
