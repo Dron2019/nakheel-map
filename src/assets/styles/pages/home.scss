@@ -19,6 +19,7 @@ body {
 }
 
 .sidebar {
+
   .title {
     font-family: 'Nakheel-Text';
     font-style: normal;
@@ -41,6 +42,13 @@ body {
   text-align: left;
   display: flex;
   gap: 50px;
+
+  @media (orientation: landscape) {
+    right: auto;
+    left: 50px;
+    flex-direction: row-reverse;
+  }
+
   button {
     margin-bottom: 20px;
     margin-left: 0;
@@ -90,14 +98,14 @@ body {
 
 .popup {
   position: fixed;
-  width: 750px;
+  width: 1000px;
   display: flex;
   // column-gap: 20px;
-  padding: 20px;
+  padding: 40px;
   background: #FFFFFF;
   backdrop-filter: blur(10px);
   /* Note: backdrop-filter has minimal browser support */
-  border-radius: 50px 50px 0px 50px;
+  // border-radius: 50px 50px 0px 50px;
   transform: translateX(-50%) translateY(-100%);
 
   pointer-events: none;
@@ -113,19 +121,18 @@ body {
 
   &__close {
     position: absolute;
-    right: 11px;
-    bottom: 11px;
-    width: 15px;
-    height: 15px;
+    right: 15px;
+    top: 15px;
+    width: 24px;
+    height: 24px;
   }
 
   &__img,
   &__qr {
     // border-radius: 40px;
-    width: 196px;
-    height: 196px;
+    width: 270px;
+    height: 270px;
     flex-shrink: 0;
-    margin-bottom: 40px;
   }
   &__text {
     padding-left: 20px;
@@ -139,23 +146,25 @@ body {
     div {
       font-family: 'Nakheel-Text';
       font-style: normal;
-      font-weight: 400;
-      font-size: 20px;
+      font-weight: 700;
+      font-size: 32px;
       line-height: 130%;
-      /* identical to box height, or 26px */
-
+      /* identical to box height, or 42px */
+      
       text-align: center;
       letter-spacing: -0.02em;
+      text-transform: uppercase;
 
       color: #001030;
       margin-bottom: 4px;
+      text-transform: uppercase;
     }
     p {
       font-family: 'Nakheel-Text';
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
-      line-height: 130%;
+      font-size: 20px;
+      line-height: 120%;
       /* or 18px */
 
       text-align: center;
@@ -166,6 +175,11 @@ body {
       color: #3E464D;
       margin-bottom: 16px;
     }
+  }
+  button {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 40px;
   }
 }
 
@@ -238,8 +252,8 @@ button {
   &__title {
     font-family: 'Nakheel-Text';
     font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 32px;
     line-height: 130%;
     /* identical to box height, or 26px */
 
@@ -264,13 +278,18 @@ button {
 .description {
   // background-color: #FFFFFF;
   // border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 20px;
+  // border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px;
   position: fixed;
   left: 50px;
   top: 50px;
-  width: 400px;
-  color: #fff;
+  width: 440px;
+  background-color: #fff;
+
+  @media (orientation: landscape) {
+    left: 100px;
+    top: 10 0px;
+  }
   &__title {
     font-family: 'Nakheel-Text';
     font-style: normal;
@@ -284,7 +303,7 @@ button {
     
     /* 3D colours/Black */
     
-    color: #fff;
+    color: #001030;
 margin-bottom: 20px;
   }
   &__text {
@@ -299,7 +318,7 @@ margin-bottom: 20px;
     
     /* 3D colours/Black */
     
-    color: #fff;
+    color: rgba(0, 16, 48, 0.5);
     margin-bottom: 20px;
   }
   button {
@@ -315,4 +334,50 @@ margin-bottom: 20px;
     justify-content: flex-start;
     align-content: flex-end;
     gap: 8px;
+    @media (orientation: landscape) {
+      align-content: flex-start;
+      align-items: flex-start;
+    }
+}
+
+@media (orientation: landscape){
+  .vertical-view {
+    display: none !important;
+  }
+}
+@media (orientation: portrait){
+  .horizontal-view {
+    display: none !important;
+  }
+}
+
+.zone-highlighter {
+  background-color: #001030;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  position: fixed;
+  right: 100px;
+  top: 100px;
+  width: max-content;
+  column-gap: 8px;
+  svg {
+    transition: .25s ease-out;
+  }
+  &.active {
+    background-color: #FFFFFF;
+    color: #001030;
+    svg {
+      transform: rotate(-180deg);
+      [fill] {
+        fill: #001030;
+      }
+      [stroke] {
+        stroke: #001030;
+      }
+    }
+  }
 }
