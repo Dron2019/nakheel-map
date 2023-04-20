@@ -133,8 +133,8 @@ window.addEventListener('myevent',function(evt){
 document.querySelector('[data-zone-highlighter]').addEventListener('click',function(evt){
   this.classList.toggle('active');
   if (this.classList.contains('active')) {
-    document.querySelectorAll('[data-svg-zone]').forEach(el => el.style.fill = 'red')
+    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.add('active'))
   } else {
-    document.querySelectorAll('[data-svg-zone]').forEach(el => el.style.fill = '')
+    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.remove('active'))
   }
 });
