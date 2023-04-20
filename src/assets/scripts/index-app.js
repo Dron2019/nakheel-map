@@ -40,6 +40,8 @@ const pinData = {
 
 let timeoutClosing = 0;
 
+
+
 document.body.addEventListener('click',function(evt){
   const target = evt.target.closest('.popup__close');
   if (!target) return;
@@ -114,8 +116,11 @@ document.body.addEventListener('click',function(evt){
 
 function closePopups() {
   document.querySelectorAll('.popup2, .popup').forEach(el => {
+    el.classList.remove('active');
     el.classList.remove('visible');
-  })
+  });
+
+  document.querySelectorAll('.active[data-zone-highlighter]').forEach(el => el.click());
 }
 
 function addTimeout() {

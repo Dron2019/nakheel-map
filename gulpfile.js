@@ -157,7 +157,10 @@ function server() {
 	  // notify: false,
 	  // proxy,
 	});
-	browserSync.watch(`${paths.root}/**/*.*`, browserSync.reload);
+	browserSync.watch([`${paths.root}/**/*.{html,js,json,png,jpg,gif}`], browserSync.reload);
+	browserSync.watch(`${paths.root}/**/*.css`,  () => {
+	  browserSync.reload('*.css')
+	});
   }
 
 
