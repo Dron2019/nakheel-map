@@ -103,9 +103,16 @@ document.body.addEventListener('click',function(evt){
   popup.style.height = target.dataset.height ? target.dataset.height : '';
 
 
-  PDFObject.embed(target.dataset.url, "[data-pdf]", {
-    forceIframe: true,
-  });
+  document.querySelector('[data-pdf]').innerHTML = '';
+
+  document.querySelector('[data-pdf]').insertAdjacentHTML('afterbegin', `
+    <iframe src="./web/viewer.html?file=${window.location.origin}/${target.dataset.url.replace('./','')}"></iframe>
+  `)
+
+  // PDFObject.embed(target.dataset.url, "[data-pdf]", {
+  //   // forceIframe: true,
+  //   supportRedirect:true,
+  // });
 
   console.log();
   // popup.querySelector('iframe').src = target.dataset.url;
@@ -150,3 +157,8 @@ document.querySelector('[data-zone-highlighter]').addEventListener('click',funct
     document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.remove('active'))
   }
 });
+
+
+if (window.matchMedia('(max-width: 1920px').matches) {
+  document.querySelector('.map>svg').setAttribute('preserveAspectRatio', 'xMaxYMin slice');
+}
