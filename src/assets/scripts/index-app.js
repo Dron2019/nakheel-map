@@ -12,7 +12,7 @@ const pinData = {
     image_url: './assets/images/palm-beach-towers/image.jpg',
     qr_url: './assets/images/palm-beach-towers/qr.jpg',
     pdf_text: 'Palm Beach Towers presentation',
-    pdf_url: `./static/palm-beach-tower.pdf`
+    pdf_url: `./static/palm-beach-tower.pdf`,
   },
   dubai_islands: {
     title: 'Dubai Islands',
@@ -25,7 +25,7 @@ const pinData = {
     image_url: './assets/images/dubai-islands/image.jpg',
     qr_url: './assets/images/dubai-islands/qr.jpg',
     pdf_text: 'Dubai Islands presentation',
-    pdf_url: `./static/dubai-islands.pdf`
+    pdf_url: `./static/dubai-islands.pdf`,
   },
   district_11: {
     title: 'District 11',
@@ -33,16 +33,13 @@ const pinData = {
     image_url: './assets/images/district-11/image.jpg',
     qr_url: './assets/images/district-11/qr.jpg',
     pdf_text: 'District 11 presentation',
-    pdf_url: `./static/district-11.pdf`
-  }
-}
-
+    pdf_url: `./static/district-11.pdf`,
+  },
+};
 
 let timeoutClosing = 0;
 
-
-
-document.body.addEventListener('click',function(evt){
+document.body.addEventListener('click', function(evt) {
   if (evt.target.closest('.popup') === null) {
     document.querySelector('.popup').classList.remove('visible');
     return;
@@ -51,9 +48,8 @@ document.body.addEventListener('click',function(evt){
   if (!target) return;
 
   target.closest('.popup').classList.remove('visible');
-
 });
-document.body.addEventListener('click',function(evt){
+document.body.addEventListener('click', function(evt) {
   const target = evt.target.closest('g[data-id]');
   if (!target) return;
 
@@ -68,23 +64,20 @@ document.body.addEventListener('click',function(evt){
   popup.querySelector('button').dataset.url = data.pdf_url;
   popup.querySelector('button').dataset.text = data.pdf_text;
 
-
-  const { width,height } = popup.getBoundingClientRect();
+  const { width, height } = popup.getBoundingClientRect();
 
   const { top, left } = target.getBoundingClientRect();
-  
+
   const leftOffset = Math.min(left, window.innerWidth - width / 2);
   const topOffset = Math.min(top, window.innerHeight - height / 2);
 
-
-  popup.style.left = Math.max(leftOffset, width/2)+'px';
-  popup.style.top = Math.max(topOffset, height)+'px';
+  popup.style.left = Math.max(leftOffset, width / 2) + 'px';
+  popup.style.top = Math.max(topOffset, height) + 'px';
 
   popup.classList.add('visible');
-
 });
 
-document.body.addEventListener('click',function(evt){
+document.body.addEventListener('click', function(evt) {
   if (evt.target.closest('.popup2') === null) {
     document.querySelector('.popup2').classList.remove('visible');
     return;
@@ -92,22 +85,46 @@ document.body.addEventListener('click',function(evt){
   const target = evt.target.closest('.popup2__close');
   if (!target) return;
   document.querySelector('.popup2').classList.remove('visible');
-
 });
 
-document.body.addEventListener('click',function(evt){
+document.body.addEventListener('click', function(evt) {
   const target = evt.target.closest('[data-url]');
   if (!target) return;
 
   const popup = document.querySelector('.popup2');
   popup.style.height = target.dataset.height ? target.dataset.height : '';
 
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-  document.querySelector('[data-pdf]').innerHTML = '';
+  if (isIOS) {
+    document.querySelector('[data-pdf]').innerHTML = '';
+    document.querySelector('[data-pdf]').insertAdjacentHTML(
+      'afterbegin',
+      `
+      <iframe src="./web/viewer.html?file=${window.location.origin}/${target.dataset.url.replace(
+        './',
+        '',
+      )}"></iframe>
+    `,
+    );
+  } else {
+    PDFObject.embed(target.dataset.url, '[data-pdf]', {
+      forceIframe: true,
+      supportRedirect: true,
+    });
+  }
 
-  document.querySelector('[data-pdf]').insertAdjacentHTML('afterbegin', `
-    <iframe src="./web/viewer.html?file=${window.location.origin}/${target.dataset.url.replace('./','')}"></iframe>
-  `)
+  // document.querySelector('[data-pdf]').innerHTML = '';
+
+  // document.querySelector('[data-pdf]').insertAdjacentHTML(
+  //   'afterbegin',
+  //   `
+  //   <iframe src="./web/viewer.html?file=${window.location.origin}/${target.dataset.url.replace(
+  //     './',
+  //     '',
+  //   )}"></iframe>
+  // `,
+  // );
 
   // PDFObject.embed(target.dataset.url, "[data-pdf]", {
   //   // forceIframe: true,
@@ -120,10 +137,9 @@ document.body.addEventListener('click',function(evt){
   // popup.querySelector('iframe').contentWindow.location.reload();
   popup.querySelector('.popup2__title').textContent = target.dataset.text;
   popup.classList.add('visible');
-
 });
 
-document.body.addEventListener('click',function(evt){
+document.body.addEventListener('click', function(evt) {
   clearTimeout(timeoutClosing);
   addTimeout();
 });
@@ -141,23 +157,18 @@ function addTimeout() {
   timeoutClosing = setTimeout(closePopups, 1000 * 120);
 }
 
-
-window.addEventListener('myevent',function(evt){
-
+window.addEventListener('myevent', function(evt) {
   console.log('EVENT');
 });
 
-
-
-document.querySelector('[data-zone-highlighter]').addEventListener('click',function(evt){
+document.querySelector('[data-zone-highlighter]').addEventListener('click', function(evt) {
   this.classList.toggle('active');
   if (this.classList.contains('active')) {
-    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.add('active'))
+    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.add('active'));
   } else {
-    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.remove('active'))
+    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.remove('active'));
   }
 });
-
 
 if (window.matchMedia('(max-width: 1920px').matches) {
   document.querySelector('.map>svg').setAttribute('preserveAspectRatio', 'xMaxYMin slice');
