@@ -94,7 +94,7 @@ document.body.addEventListener('click', function(evt) {
   const popup = document.querySelector('.popup2');
   popup.style.height = target.dataset.height ? target.dataset.height : '';
 
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isIOS = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
 
   if (isIOS) {
     document.querySelector('[data-pdf]').innerHTML = '';

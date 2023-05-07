@@ -2,9 +2,9 @@ const buttonsRef = document.querySelectorAll('.presentation-btn');
 
 const links = [
   'https://www.comobynakheel.com/emotions/home',
-  'https://tecma-demo.com/clients/d1west/emotions',
-  './web/viewer.html?file=https://nakheelmap.com/static/palm-beach-tower.pdf',
   './web/viewer.html?file=https://nakheelmap.com/static/dubai-islands.pdf',
+  './web/viewer.html?file=https://nakheelmap.com/static/palm-beach-tower.pdf',
+  'https://tecma-demo.com/clients/d1west/emotions',
 ];
 
 buttonsRef.forEach(function(button) {
@@ -15,7 +15,7 @@ buttonsRef.forEach(function(button) {
     const iframe = popup.querySelector('iframe');
     iframe.src = links[index];
 
-    const buttonText = button.innerText;
+    const buttonText = button.dataset.type;
     const iframeTitleRef = popup.querySelector('.presentation-popup-top__title');
     iframeTitleRef.innerHTML = buttonText;
 
