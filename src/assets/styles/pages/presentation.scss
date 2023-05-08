@@ -25,6 +25,8 @@
         align-items: center;
         justify-content: center;
         gap: 24px;
+        position: relative;
+        z-index: 1;
     }
     &-btn-item {
         width: calc(50% - 24px);
@@ -55,7 +57,87 @@
         letter-spacing: -0.02em;
         text-transform: uppercase;
         color: #FFFFFF;
+        opacity: 1;
+        transition: all ease-in-out 0.3s;
+        position: relative;
 
+        &.is-active {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+    }
+
+    &-btn-qr {
+        padding: 11px;
+        margin: 0 10px;
+        width: 64px;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+
+
+
+        &.close {
+            position: relative;
+            z-index: 10000;
+            .presentation-btn-qr-close {
+                display: block;
+                
+            }
+
+            .presentation-btn-qr-main {
+                display: none;
+
+            }
+        }
+
+        .presentation-btn-qr-main {
+            display: block;
+            width: 28px;
+            height: 28px;
+
+        }
+
+        .presentation-btn-qr-close {
+            display: none;
+            width: 28px;
+            height: 28px;
+
+        }
+
+    }
+
+    &-btn-popup-qr {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 0;
+        opacity: 0;
+        pointer-events: none;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 30%;
+        }
+
+
+        
+        &.is-active {
+            width: 100%;
+            z-index: 1000000;
+            opacity: 1;
+        }
     }
     &-popup {
         opacity: 0;
