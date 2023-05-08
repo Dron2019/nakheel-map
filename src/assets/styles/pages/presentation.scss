@@ -149,11 +149,13 @@
         right: 0;
         bottom: 0;
         padding: 39px 24px;
-        transition: all ease-in-out 0.3s;
+        transition: all ease-in-out 0.4s;
+        z-index: 100000;
 
         &.active {
             opacity: 1;
             pointer-events: all;
+
         }
 
     }
