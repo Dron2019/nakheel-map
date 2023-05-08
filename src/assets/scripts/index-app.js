@@ -1,6 +1,14 @@
 import PDFObject from 'pdfobject';
 let pdfViewer = null;
 const pinData = {
+  como_residence: {
+    title: 'Como Residences ',
+    text: `Como Residences blends the very best of the world’s most luxurious destinations into one monumental, architectural landmark.`,
+    image_url: './assets/images/como-residence/image.jpg',
+    qr_url: './assets/images/como-residence/qr.jpg',
+    pdf_text: 'Como Residences presentation',
+    pdf_url: `./static/como_residence.pdf`,
+  },
   palm_beach_towers: {
     title: 'Palm Beach Towers ',
     text: `Palm Beach Towers 3 is an amalgam of
