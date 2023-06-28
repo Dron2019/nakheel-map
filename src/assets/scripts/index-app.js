@@ -1,4 +1,33 @@
 import PDFObject from 'pdfobject';
+import customSelecthandler from './modules/selectHandler';
+import useState from './modules/hooks/useState';
+import svgSwitcher from './modules/svgSwitcher';
+
+const a = customSelecthandler('[data-select]');
+
+
+
+svgSwitcher();
+
+const [ filter, setFilter, useFilterEffect ] = useState({});
+
+useFilterEffect((state) => {
+  console.log(state);
+})
+
+a.onChange(({ target }) => {
+  console.log('efefef change', target.dataset.select, target.name);
+  setFilter({
+    ...filter(),
+    [target.name]: target.value,
+  })
+});
+
+
+
+
+
+
 let pdfViewer = null;
 const pinData = {
   como_residence: {
@@ -169,15 +198,180 @@ window.addEventListener('myevent', function(evt) {
   console.log('EVENT');
 });
 
-document.querySelector('[data-zone-highlighter]').addEventListener('click', function(evt) {
+document.querySelector('[data-zone-highlighter]').addEventListener('change', function(evt) {
   this.classList.toggle('active');
-  if (this.classList.contains('active')) {
-    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.add('active'));
+  console.log('efefefegreswgh e tfew tgesw gfes tgfesw ', this.checked);
+  if (this.checked) {
+    document.querySelectorAll('[class*="master communiti"]').forEach(el => el.classList.add('active'));
   } else {
-    document.querySelectorAll('[data-svg-zone]').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('[class*="master communiti"]').forEach(el => el.classList.remove('active'));
   }
 });
 
 if (window.matchMedia('(max-width: 1920px').matches) {
   document.querySelector('.map>svg').setAttribute('preserveAspectRatio', 'xMaxYMin slice');
+}
+
+
+
+
+const [ clickedProject, setClickedProject, useClickedProjectEffect ] = useState('');
+
+useClickedProjectEffect(val => {
+
+  if (val)  {
+    document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = '');
+    
+  } else {
+    document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = 0);
+  }
+  // console.log(val);
+});
+useClickedProjectEffect(val => {
+
+  document.querySelectorAll('[data-project-routes]').forEach(el => {
+    if (el.dataset.projectRoutes === val) {
+      el.style.display = '';
+    } else {
+      
+      el.style.display = 'none';
+    }
+  })
+});
+
+
+useClickedProjectEffect(val => {
+
+  document.querySelectorAll('[data-landmark]').forEach(el => {
+    if (val) {
+      el.classList.add('inverted');
+    } else {
+      el.classList.remove('inverted');
+    }
+  });
+});
+
+
+useClickedProjectEffect(val => {
+
+  console.log('clicked Project', val);
+  const activeProject = document.querySelector(`[data-project="${val}"]`);
+
+  console.log(activeProject);
+  if (!val) {
+    document.querySelectorAll('.master.communiti').forEach(el => {
+      el.classList.remove('shadowed');
+    });
+    return;
+  }
+  document.querySelectorAll('.master.communiti').forEach(el => {
+    if (el === activeProject) {
+      el.classList.remove('shadowed');
+    } else {
+      el.classList.add('shadowed');
+    }
+  });
+});
+
+
+
+setClickedProject('');
+
+
+const [ activeInnerRoute, setActiveInnerRoute, useActiveInnerRouteEffect ] = useState(null);
+
+document.body.addEventListener('click',function(evt){
+  const target = evt.target.closest('[data-project]');
+  if (target && target.dataset.project === clickedProject()) return;
+  if (evt.target.closest('[data-landmark]')) return;
+  if (!target) {
+    setClickedProject('');
+    setActiveInnerRoute(null);
+    return;
+  }
+  setClickedProject(target.dataset.project);
+
+  console.log(target);
+});
+
+
+
+
+useActiveInnerRouteEffect(val => {
+  console.log(val);
+  document.querySelectorAll('.active[data-inner-route]').forEach(el => {
+    el.classList.remove('active');
+  });
+  const landmarks = document.querySelectorAll('[data-landmark]');
+  if (val) {
+    val.classList.add('active');
+
+    const activeLandMark = document.querySelector(`[data-landmark="${val.classList.value.replace(' active', '')}"]`);
+
+    landmarks.forEach(el => {
+      if (el === activeLandMark) {
+        el.classList.remove('shadowed');
+      } else {
+        el.classList.add('shadowed');
+      }
+    })
+    console.log(activeLandMark);
+    
+    simulatePathDrawing(val.querySelector('.Path'));
+    return;
+  }
+
+  landmarks.forEach(el => {
+    el.classList.remove('shadowed');
+  })
+});
+
+
+document.querySelectorAll('[data-landmark]').forEach(el => {
+
+  el.addEventListener('click', () => {
+
+    const innerRouteOfClickedProject = document.querySelector(`[data-project-routes="${clickedProject()}"] [data-inner-route][class*="${el.dataset.landmark}"]`);
+
+    if (!innerRouteOfClickedProject) {
+      setActiveInnerRoute(null);
+      return;
+    }
+    
+    setActiveInnerRoute(innerRouteOfClickedProject);
+
+
+
+    console.log('[data-landmark]click');
+  })
+  el.addEventListener('mouseenter', () => {
+    console.log('[data-landmark]mouseenter');
+  })
+  el.addEventListener('mouseleave', () => {
+    console.log('[data-landmark]mouseleave');
+  })
+});
+
+
+
+function simulatePathDrawing(path, strokeWidth = "3") {
+  // var path = document.querySelector('.squiggle-animated path');
+  var length = path.getTotalLength();
+
+  console.log(length);
+  // Clear any previous transition
+  path.style.transition = path.style.WebkitTransition = "none";
+  // Set up the starting positions
+  path.style.strokeDasharray = length + " " + length;
+  path.style.strokeDashoffset = length;
+  // Trigger a layout so styles are calculated & the browser
+  // picks up the starting position before animating
+  path.getBoundingClientRect();
+  // Define our transition
+  path.style.transition = path.style.WebkitTransition =
+    "stroke-dashoffset 1.5s ease-in-out";
+  // Go!
+  path.style.strokeDashoffset = "0";
+  // path.style.strokeWidth = strokeWidth;
+  // path.style.stroke = "#F7F7F7";
 }

@@ -16,14 +16,14 @@ body {
     width: 100%;
     height: 100%;
   }
-  @media screen and (max-width: 1920px) and (orientation: portrait) {
-    overflow-x: auto;
-    svg {
+  // @media screen and (max-width: 1920px) and (orientation: portrait) {
+  //   overflow-x: auto;
+  //   svg {
 
-      height: 100vh;
-      width: calc(100vh / 9 * 16);
-    }
-  }
+  //     height: 100vh;
+  //     width: calc(100vh / 9 * 16);
+  //   }
+  // }
   // @media screen and (max-width: 1920px) and (orientation: landscape) {
   //   overflow-x: hidden;
   //   overflow-y: auto;
@@ -366,9 +366,10 @@ button {
   position: fixed;
   left: 50px;
   top: 50px;
-  width: 440px;
-  background-color: #fff;
 
+   &>svg {
+    width: 10.4vw;
+  }
   @media (orientation: landscape) {
     left: 50px;
     top: 10 0px;
@@ -388,18 +389,14 @@ button {
   }
   &__title {
     font-family: 'Nakheel-Text';
-    font-style: normal;
+    color: var(--white, #FFF);
+    font-size: 20px;
     font-weight: 700;
-    font-size: 32px;
-    line-height: 100%;
-    /* or 32px */
-    
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
+    line-height: 22px;
     
     /* 3D colours/Black */
     
-    color: #001030;
+    color: #ffffff;
     margin-bottom: 20px;
     @include to(1920px) {
       font-size: 24px;
@@ -454,12 +451,12 @@ button {
 
 @media (orientation: landscape){
   .vertical-view {
-    display: none !important;
+    // display: none !important;
   }
 }
 @media (orientation: portrait){
   .horizontal-view {
-    display: none !important;
+    // display: none !important;
   }
 }
 
@@ -471,7 +468,7 @@ button {
   align-items: center;
   justify-content: center;
   padding: 12px 16px;
-  position: fixed;
+  // position: fixed;
   right: 50px;
   top: 50px;
   width: max-content;

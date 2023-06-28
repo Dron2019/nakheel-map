@@ -1,0 +1,76 @@
+.custom-select {
+    
+    &-container {
+        font-family: 'Nakheel-Text';
+        color: white;
+        width: 15.7vw;
+    }
+    &-opener {
+        font-family: 'Nakheel-Text';
+        border-radius: 8px;
+        @include customSelectBg;
+        padding: 1.1vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #fff;
+        &:after {
+            content: '';
+            display: inline-block;
+            background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.6 19.2003L16 12.8003L22.4 19.2003' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            width: 32px;
+            height: 32px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: .25s ease-out;
+        }
+    }
+    &-container.is-open &-opener:after {
+        transform: rotate(180deg)
+    }
+    
+    &-panel-title {
+        padding: 16px 16px 12px 16px;
+    }
+
+    &-panel {
+        @include customSelectBg;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        transition: .25s ease-out;
+        
+        opacity: 0;
+    }
+    &-container.is-open &-panel {
+        border-color: #fff;
+        opacity: 1;
+    }
+    &-option {
+        padding: 1.1vw;
+        cursor: pointer;
+        transition: .25s ease-out;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        &:before {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.5' d='M16 6C10.48 6 6 10.48 6 16C6 21.52 10.48 26 16 26C21.52 26 26 21.52 26 16C26 10.48 21.52 6 16 6ZM16 24C11.58 24 8 20.42 8 16C8 11.58 11.58 8 16 8C20.42 8 24 11.58 24 16C24 20.42 20.42 24 16 24Z' fill='white'/%3E%3C/svg%3E%0A");
+            width: 32px;
+            background-size: contain;
+            height: 32px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            padding-right: 0;
+            margin-right: 8px;
+        }
+        &.is-selected:before {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 6C10.48 6 6 10.48 6 16C6 21.52 10.48 26 16 26C21.52 26 26 21.52 26 16C26 10.48 21.52 6 16 6ZM16 24C11.58 24 8 20.42 8 16C8 11.58 11.58 8 16 8C20.42 8 24 11.58 24 16C24 20.42 20.42 24 16 24Z' fill='white'/%3E%3Cpath d='M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21Z' fill='white'/%3E%3C/svg%3E%0A");
+            padding-right: 0;
+        }
+        &.has-focus,
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+}

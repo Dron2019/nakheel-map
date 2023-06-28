@@ -23,6 +23,12 @@
 @import '../../pug/components/form/form';
 @import '../../pug/components/toster/toster';
 
+
+@import './components/selects-wrapper';
+@import './components/custom-select';
+@import './components/checkboxes/form-switch';
+@import './components/map-parts';
+
 //@import 'pages/contacts';
 //@import 'pages/contact';
 //@import 'pages/home';

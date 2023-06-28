@@ -1,4 +1,4 @@
-$default-font: "gilroy",
+$default-font: "Nakheel-Text",
 sans-serif;
 $default-font2: "montser",
 sans-serif;
@@ -24,6 +24,8 @@ $gold: #CFA46E;
   --logo-w: 160px;
   --sliceFigure: 239px;
   --sliceFigure-big: 541px;
+
+  --side-fields: 2.9vw;
 }
 
 @media screen and (max-width: 1440px){

@@ -1,0 +1,60 @@
+
+[class="Project"] {
+    display: none;
+}
+
+.master.communiti {
+    opacity: 0;
+    cursor: pointer;
+    pointer-events: none;
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+        
+        [class="Project"] {
+           display: initial;   
+        }
+    }
+    &.shadowed {
+        opacity: 0.25 !important;
+    }
+}
+
+[data-img-overlay] {
+    transition: .25s ease-out;
+}
+
+[data-landmark] {
+    cursor: pointer;
+    transition: .25s ease-out;
+    &.shadowed {
+        opacity: 0.5;
+    }
+    &.inverted {
+        [fill="#F5F1E8"] {
+            fill: #000000;
+        }
+        [stroke="#F5F1E8"] {
+            stroke: #000000;
+        }
+        [fill="#00263A"] {
+            fill: #F5F1E8;
+        }
+        [stroke="#00263A"] {
+        
+            stroke: #F5F1E8;
+        }
+    }
+}
+
+[data-inner-route] {
+    opacity: 0;
+
+    &.shadowed {
+        opacity: 0.5;
+    }
+
+    &.active {
+        opacity: 1;
+    }
+}
