@@ -1,4 +1,4 @@
-import useState from "./hooks/useState";
+ import useState from "./hooks/useState";
 
 
 export default function svgSwitcher() {
@@ -9,7 +9,9 @@ export default function svgSwitcher() {
             setView(l.view);
         }
     })
-
+    history.next({
+      view: 'default'
+    });
 
     useViewEffect(currentView => {
         document.querySelectorAll('[data-page]').forEach(el => {
@@ -26,7 +28,7 @@ export default function svgSwitcher() {
             el.style.display = 'none';
         });
 
-        history.update({
+        history.next({
             view: currentView
         })
     });

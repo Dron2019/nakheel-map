@@ -12,8 +12,39 @@ svgSwitcher();
 const [ filter, setFilter, useFilterEffect ] = useState({});
 
 useFilterEffect((state) => {
+
   console.log(state);
-})
+
+  document.querySelectorAll('[data-filter-item]').forEach(elementForFilter => {
+    let validCount = 0;
+    let fieldsCountForValidation = 0; 
+
+    Object.entries(state).forEach(([ filterKey, filterValue ]) => {
+      const datasetValue = elementForFilter.dataset[`filter_${filterKey}`];
+      if (!datasetValue) {
+        validCount++;
+        fieldsCountForValidation++;
+        return;
+      }
+      if (!filterValue) {
+        validCount++;
+        fieldsCountForValidation++;
+        return;
+      }
+      if (datasetValue != filterValue) {
+        fieldsCountForValidation++;
+        return;
+      }
+      validCount++;
+      fieldsCountForValidation++;
+    });
+    console.log('validCount',validCount,
+      'fieldsCountForValidation', fieldsCountForValidation);
+
+    elementForFilter.style.display = validCount == fieldsCountForValidation ? '' :  'none';
+    
+  })
+})  
 
 a.onChange(({ target }) => {
   console.log('efefef change', target.dataset.select, target.name);
