@@ -455,7 +455,7 @@ document.body.addEventListener('click',function(evt){
   setClickedProject({
     ...clickedProject(),
       name: target.dataset.project,
-      element: null
+      element: target
   });
 
   console.log(target);
