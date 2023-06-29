@@ -7,10 +7,12 @@
     opacity: 0;
     cursor: pointer;
     pointer-events: none;
+    transform-origin: center;
+    transform-box: fill-box;
     &.active {
         opacity: 1;
         pointer-events: all;
-        
+
         [class="Project"] {
            display: initial;   
         }
@@ -19,6 +21,45 @@
         opacity: 0.25 !important;
     }
 }
+.windows {
+    .master.communiti.active {
+        &>g>[fill],
+        &>[fill] {
+            animation : fillOpacityPulse 3s ease-out infinite;
+        }
+        &>g>[stroke],
+        &>[stroke] {
+            // animation : strokePulse 3s ease-out infinite;
+        }
+    }
+}
+
+@keyframes fillOpacityPulse {
+    0% {
+      fill-opacity: 0.3;
+    }
+    
+    50% {
+        fill-opacity: 0.75;
+    }
+    
+    100% {
+        fill-opacity: 0.3;
+    }
+  }
+@keyframes strokePulse {
+    0% {
+      stroke: #fff;
+    }
+    
+    50% {
+        stroke: rgba(0, 38, 58, 0.75);
+    }
+    
+    100% {
+        stroke: #fff;
+    }
+  }
 
 [data-img-overlay] {
     transition: .25s ease-out;

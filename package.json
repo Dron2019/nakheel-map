@@ -86,6 +86,7 @@
     "axios": "^0.21.1",
     "bezier-easing": "^2.1.0",
     "cleave.js": "^1.6.0",
+    "current-device": "^0.10.2",
     "custom-select": "^1.1.15",
     "gsap": "^3.5.1",
     "i18next": "^19.8.4",

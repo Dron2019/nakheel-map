@@ -48,10 +48,10 @@ useFilterEffect((state) => {
   })
 })  
 
-setFilter(Array.from(document.querySelectorAll('select[data-select]')).reduce((acc,el) => {
-  acc[el.name] = '';
-  return acc;
-}, {}))
+// setFilter(Array.from(document.querySelectorAll('select[data-select]')).reduce((acc,el) => {
+//   acc[el.name] = '';
+//   return acc;
+// }, {}))
 
 
 a.onChange(({ target }) => {
@@ -246,6 +246,12 @@ document.querySelector('[data-zone-highlighter]').addEventListener('change', fun
     document.querySelectorAll('[class*="master communiti"]').forEach(el => el.classList.remove('active'));
   }
 });
+
+if (document.querySelector('[data-zone-highlighter]').checked) {
+  document.querySelectorAll('[class*="master communiti"]').forEach(el => el.classList.add('active'));
+} else {
+  document.querySelectorAll('[class*="master communiti"]').forEach(el => el.classList.remove('active'));
+}
 
 // if (window.matchMedia('(max-width: 1920px').matches) {
 //   document.querySelector('.map>svg').setAttribute('preserveAspectRatio', 'xMaxYMin slice');

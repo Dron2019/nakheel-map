@@ -2,16 +2,14 @@
 
 
 export default function svgSwitcher() {
-    const [ view, setView, useViewEffect ] = useState('');
+    const [ view, setView, useViewEffect ] = useState(History.getSearchUrl(window.location.href).view || '');
+
     const history = new History({
-        updateFsm: (l) => {
-            console.log(l);
-            setView(l.view);
-        }
+      updateFsm: (l) => {
+        console.log(l);
+        // setView(l.view);
+      }
     })
-    history.next({
-      view: 'default'
-    });
 
     useViewEffect(currentView => {
         document.querySelectorAll('[data-page]').forEach(el => {
@@ -33,12 +31,15 @@ export default function svgSwitcher() {
         })
     });
 
-
-
-    setView('');
-
+    setView(view());
     document.body.addEventListener('dblclick',function(evt){
-        const target = evt.target.closest('[data-link');
+        const target = evt.target.closest('[data-dblclick-link]');
+        if (!target) return;
+
+        setView(target.dataset.dblclickLink);
+    });
+    document.body.addEventListener('click',function(evt){
+        const target = evt.target.closest('[data-link]');
         if (!target) return;
 
         setView(target.dataset.link);
@@ -108,6 +109,12 @@ class History {
     }
   
     parseSearchUrl(url) {
+      const { searchParams } = new URL(decodeURIComponent(url));
+      const parseSearchParam = Object.fromEntries(searchParams.entries());
+      return parseSearchParam;
+    }
+
+    static getSearchUrl(url) {
       const { searchParams } = new URL(decodeURIComponent(url));
       const parseSearchParam = Object.fromEntries(searchParams.entries());
       return parseSearchParam;

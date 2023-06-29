@@ -3,7 +3,7 @@
     &-container {
         font-family: 'Nakheel-Text';
         color: white;
-        width: 15.7vw;
+        width: 12.7vw;
     }
     &-opener {
         font-family: 'Nakheel-Text';
@@ -14,6 +14,7 @@
         justify-content: space-between;
         align-items: center;
         border: 1px solid #fff;
+        font-size: 1.08vw;
         &:after {
             content: '';
             display: inline-block;
@@ -52,6 +53,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        font-size: 1.08vw;
         &:before {
             content: '';
             background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.5' d='M16 6C10.48 6 6 10.48 6 16C6 21.52 10.48 26 16 26C21.52 26 26 21.52 26 16C26 10.48 21.52 6 16 6ZM16 24C11.58 24 8 20.42 8 16C8 11.58 11.58 8 16 8C20.42 8 24 11.58 24 16C24 20.42 20.42 24 16 24Z' fill='white'/%3E%3C/svg%3E%0A");
