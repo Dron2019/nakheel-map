@@ -1,0 +1,22 @@
+{
+    "version": 1.1,
+    "tags": [
+      {
+        "name": "g",
+        "description": "My button. You should use it as in `<my-button type='alert'></mybutton>`.",
+        "attributes": [
+          {
+            "name": "data-project",
+            "description": "My button type",
+            "values": [{"name":"International City"},{"name":"district_11"},{"name":"Jumeirah Village Triangle"},{"name":"Dubai Islands"},{"name":"Palm Jumeirah"},{"name":"Palm Jebel Ali"},{"name":"Jumeirah Village Circle"},{"name":"Jumeirah Park"},{"name":"meydan"},{"name":"CanalFrontResidence"},{"name":"Jumeirah Village Circle"},{"name":"International City"},{"name":"International City"},{"name":"Jumeirah Park"},{"name":"Jumeirah Village Triangle"},{"name":"Jumeirah Park"},{"name":"Dubai Islands"}]
+          }
+        ],
+        "references": [
+          {
+            "name": "Bootstrap buttons",
+            "url": "https://getbootstrap.com/docs/4.0/components/buttons/"
+          }
+        ]
+      }
+    ]
+  }

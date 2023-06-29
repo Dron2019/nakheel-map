@@ -1,21 +1,5 @@
 {
-    "gitlens.deepLinks.schemeOverride": false,
-    "html.customData": [
-        {
-          "tag": "custom-tag",
-          "description": "Description for your custom tag",
-          "attributes": [
-            {
-              "name": "custom-attribute",
-              "description": "Description for your custom attribute",
-              "values": [
-                "value1",
-                "value2",
-                "value3"
-              ]
-            }
-          ]
-        }
-    ]
+    "html.customData": ["./html.html-data.json"],
+    "gitlens.deepLinks.schemeOverride": false
     
 }

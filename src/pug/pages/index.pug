@@ -69,11 +69,22 @@ block content
     <svg class="popup__close" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7.5 6.08579L13.2929 0.292893C13.6834 -0.0976311 14.3166 -0.0976311 14.7071 0.292893C15.0976 0.683417 15.0976 1.31658 14.7071 1.70711L8.91421 7.5L14.7071 13.2929C15.0976 13.6834 15.0976 14.3166 14.7071 14.7071C14.3166 15.0976 13.6834 15.0976 13.2929 14.7071L7.5 8.91421L1.70711 14.7071C1.31658 15.0976 0.683417 15.0976 0.292893 14.7071C-0.0976315 14.3166 -0.0976315 13.6834 0.292893 13.2929L6.08579 7.5L0.292893 1.70711C-0.0976315 1.31658 -0.0976315 0.683417 0.292893 0.292893Z" fill="#001030"/>
       </svg>
-    img.popup__img
+    .popup__img.swiper-container
+      .thumbs
+      .swiper-wrapper 
+        img(src="./assets/images/district-11/image.jpg").swiper-slide
+        img(src="./assets/images/district-11/image.jpg").swiper-slide
+        img(src="./assets/images/district-11/image.jpg").swiper-slide
+        img(src="./assets/images/district-11/image.jpg").swiper-slide
     .popup__text
       div Palm Beach Towers 
       p Palm Beach Towers 3 is an amalgam of style and luxury that inspires a fresh perspective; where each day the sounds of the waves are the backdrop to a life immersed in the best the city has to offer.
-      button Discover
+      .popup__button-container
+        a(target='_blank' data-gallery-link) Discover
+        a(target='_blank' data-video-link) Discover
+        a(target='_blank' data-payment-plan-link) Discover
+        a(target='_blank' data-floor-plan-link) Discover
+        a(target='_blank' data-material-board-specification) Discover
     img.popup__qr
   .popup2
     button.popup2__close 

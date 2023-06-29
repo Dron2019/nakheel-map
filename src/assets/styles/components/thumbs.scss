@@ -1,0 +1,18 @@
+.thumbs {
+	&__item {
+		border-radius: 50%;
+		width: 16px;
+        height: 16px;
+		background-color: rgba(#fff, 0.5);
+		opacity: 1;
+		transition: width .25s ease-out;
+		transform-origin: center;
+		flex-shrink: 0;
+		&[class*="active"] {
+            background-color: rgba(#fff, 1);
+		}
+	}
+	&>:nth-child(n+2) {
+		margin-left: 8px;
+	}
+}

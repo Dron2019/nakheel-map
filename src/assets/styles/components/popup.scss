@@ -1,0 +1,173 @@
+.popup {
+    position: fixed;
+    --width: 620px;
+    width: var(--width);
+    display: flex;
+    // column-gap: 20px;
+    flex-direction: column;
+    --padding: 30px;
+    padding: 0;
+    background: #FFFFFF;
+    overflow: hidden;
+    /* Note: backdrop-filter has minimal browser support */
+    // border-radius: 50px 50px 0px 50px;
+    transform: translateX(-50%) translateY(-100%);
+    border-radius: 23.25px;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    // @include to(1920px) {
+    //  width: 550px; 
+    //  padding: 20px;
+    // }
+    &.visible {
+      pointer-events: all;
+      visibility: visible;
+      opacity: 1;
+    }
+  
+  
+    &__close {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      width: 24px;
+      height: 24px;
+      z-index: 4;
+      [fill] {
+        fill: #fff;
+      }
+      @include to(1920px) {
+        width: 18px;
+        height: 18px;
+        right: 10px;
+        top: 10px;
+      }
+    }
+    
+    &__img {
+        width: 100%;
+        height: calc(var(--width) / 16 * 9);
+        object-fit: cover;
+        object-position: center;
+    }
+    &__qr {
+      // border-radius: 40px;
+      width: 270px;
+      height: 270px;
+      flex-shrink: 0;
+      position: absolute;
+      z-index: 2;
+      right: var(--padding);
+      top: calc(var(--width) / 16 * 9);
+      border-radius: 11.625px;
+      transform: translateY(-50%);
+      @include to(1920px) {
+        width: 125px;
+        height: 125px; 
+      }
+    }
+
+    .swiper-container {
+        position: relative;
+        .swiper-slide {
+            object-fit: cover;
+        }
+        .thumbs {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+    }
+
+    &__button-container {
+        @include row-flex();
+        width: calc(100% + 20px);
+        &>:only-child {
+            @include size(12);
+            @include shift(0);
+        }
+        &>:last-child {
+            @include size(12);
+            @include shift(0);
+        }
+        &>:nth-last-child(n+2) {
+            @include size(6);
+            @include shift(0);
+        }
+    }
+
+    &__text {
+      padding: var(--padding);
+      display: flex;
+      flex-direction: column;
+      align-content: flex-start;
+      justify-content: flex-start;
+      div {
+        font-family: 'Nakheel-Text';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 38.75px;
+        line-height: 130%;
+        /* identical to box height, or 42px */
+        
+        text-align: left;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+  
+        color: #001030;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        @include to(1920px) {
+         font-size: 24px; 
+        }
+      }
+      p {
+        font-family: 'Nakheel-Text';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 23.25px;
+        line-height: 120%;
+        /* or 18px */
+        @include to(1920px) {
+         font-size: 14px; 
+        }
+        
+        text-align: left;
+        letter-spacing: -0.02em;
+  
+        /* 3D colours/Gray */
+  
+        color: #3E464D;
+        margin-bottom: 16px;
+      }
+    }
+    a,
+    button {
+      width: 100%;
+      border-radius: 7.75px;
+        background: var(--sand, #F5F1E8);
+        color: var(--deep-navy, #00263A);
+        font-size: 27.125px;
+        font-weight: 400;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 23px;
+        text-decoration: none;
+      &:after {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.6311 7.875L25.1659 15.625M25.1659 15.625L17.6311 23.375M25.1659 15.625L7.08252 15.625' stroke='black' stroke-width='3.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+      }
+      @include to(1920px) {
+       margin-bottom: 20px; 
+      }
+    }
+  }

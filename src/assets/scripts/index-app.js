@@ -2,8 +2,10 @@ import PDFObject from 'pdfobject';
 import customSelecthandler from './modules/selectHandler';
 import useState from './modules/hooks/useState';
 import svgSwitcher from './modules/svgSwitcher';
+import Swiper, { Pagination } from 'swiper';
 
 import 'current-device';
+import { gsap } from 'gsap';
 
 const a = customSelecthandler('[data-select]');
 
@@ -16,6 +18,8 @@ const [ filter, setFilter, useFilterEffect ] = useState({});
 useFilterEffect((state) => {
 
   console.log(state);
+  let elementsToHide = [];
+  let elementsToShow = []
 
   document.querySelectorAll('[data-filter-item]').forEach(elementForFilter => {
     let validCount = 0;
@@ -29,7 +33,7 @@ useFilterEffect((state) => {
         return;
       }
       if (!filterValue) {
-        // validCount++;
+        validCount++;
         fieldsCountForValidation++;
         return;
       }
@@ -43,9 +47,23 @@ useFilterEffect((state) => {
     console.log('validCount',validCount,
       'fieldsCountForValidation', fieldsCountForValidation);
 
-    elementForFilter.style.display = validCount == fieldsCountForValidation ? '' :  'none';
-    
-  })
+    elementForFilter.style.display =  validCount == fieldsCountForValidation ? '' :  'none';
+
+    if (validCount == fieldsCountForValidation) {
+      elementsToShow.push(elementForFilter);
+    } else {
+      elementsToHide.push(elementForFilter);
+    }    
+  });
+
+  // gsap.to(elementsToShow, {
+  //   display: 1
+  // })
+  
+  // gsap.to(elementsToHide, {
+  //   autoAlpha: 0
+  // })
+
 })  
 
 // setFilter(Array.from(document.querySelectorAll('select[data-select]')).reduce((acc,el) => {
@@ -111,9 +129,33 @@ const pinData = {
     pdf_text: 'District 11 presentation',
     pdf_url: `./static/district-11.pdf`,
   },
+
+  nakheeeeel: {
+    images: ['./assets/images/district-11/qr.jpg', './assets/images/district-11/image.jpg'],
+    qr_url: './assets/images/district-11/qr.jpg',
+    title: 'Nakheeltitle',
+    text: 'Lorem Ipsum',
+    gallery_link: 'https://google.com/',
+    video_link: 'https://google.com/',
+    payment_plan: 'https://google.com/',
+    floor_plans: 'https://google.com/',
+    material_board_specification_link: 'https://google.com/' 
+
+  }
 };
 
 let timeoutClosing = 0;
+
+const popupSlider = new Swiper('.popup .swiper-container', {
+  modules: [ Pagination ],
+  pagination: {
+    el: '.popup .swiper-container .thumbs',
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="thumbs__item ' + className + '"></span>';
+    },
+  },
+});
 
 document.body.addEventListener('click', function(evt) {
   if (evt.target.closest('.popup') === null) {
@@ -132,13 +174,33 @@ document.body.addEventListener('click', function(evt) {
   const popup = document.querySelector('.popup');
 
   const data = pinData[target.dataset.id];
+  if (!data) return;
+
+
+  popup.querySelector('[data-gallery-link]').setAttribute('href', data.gallery_link);
+  popup.querySelector('[data-video-link]').setAttribute('href', data.video_link);
+  popup.querySelector('[data-payment-plan-link]').setAttribute('href', data.payment_plan);
+  popup.querySelector('[data-floor-plan-link]').setAttribute('href', data.floor_plans);
+  popup.querySelector('[data-material-board-specification]').setAttribute('href', data.material_board_specification_link);
+
+  popup.querySelector('.swiper-wrapper').innerHTML = data.images.map(el => `
+    <img src="${el}" class="swiper-slide">
+  `).join('');
+
+  popupSlider.update();
+
+  // gallery_link
+  // video_link
+  // payment_plan
+  // floor_plans
+  // material_board_specification_link
 
   popup.querySelector('.popup__text div').textContent = data.title;
   popup.querySelector('.popup__text p').textContent = data.text;
-  popup.querySelector('.popup__img').src = data.image_url;
+  // popup.querySelector('.popup__img').src = data.image_url;
   popup.querySelector('.popup__qr').src = data.qr_url;
-  popup.querySelector('button').dataset.url = data.pdf_url;
-  popup.querySelector('button').dataset.text = data.pdf_text;
+  // popup.querySelector('button').dataset.url = data.pdf_url;
+  // popup.querySelector('button').dataset.text = data.pdf_text;
 
   const { width, height } = popup.getBoundingClientRect();
 
@@ -260,22 +322,44 @@ if (document.querySelector('[data-zone-highlighter]').checked) {
 
 
 
-const [ clickedProject, setClickedProject, useClickedProjectEffect ] = useState('');
+const [ clickedProject, setClickedProject, useClickedProjectEffect ] = useState({
+  name: '',
+  element: null
+});
 
 useClickedProjectEffect(val => {
 
-  if (val)  {
+  console.log(val);
+
+  if (val.element) {
+    document.querySelectorAll('[data-project]').forEach(el => {
+      if (val.element === el || el.classList.contains('communiti')) return el.style.opacity = '';
+      if (val.element !== el) return el.style.opacity = '0.2';
+    })
+  } else {
+    document.querySelectorAll('[data-project]').forEach(el => {
+      el.style.opacity = '';
+    })
+  }
+
+  if (val.name)  {
     document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = '');
+    document.querySelectorAll('[data-filter_infrastructure]').forEach(el => el.style.opacity = '0');
     
   } else {
     document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = 0);
+    document.querySelectorAll('[data-filter_infrastructure]').forEach(el => el.style.opacity = '');
   }
+
+
+
+
   // console.log(val);
 });
 useClickedProjectEffect(val => {
 
   document.querySelectorAll('[data-project-routes]').forEach(el => {
-    if (el.dataset.projectRoutes === val) {
+    if (el.dataset.projectRoutes === val.name) {
       el.style.display = '';
     } else {
       
@@ -288,7 +372,7 @@ useClickedProjectEffect(val => {
 useClickedProjectEffect(val => {
 
   document.querySelectorAll('[data-landmark]').forEach(el => {
-    if (val) {
+    if (val.name) {
       el.classList.add('inverted');
     } else {
       el.classList.remove('inverted');
@@ -309,7 +393,7 @@ useClickedProjectEffect(val => {
 
   
 
-  if (!val){
+  if (!val.name){
     document.querySelectorAll('[data-landmark]').forEach(el => {
       el.style.display = '';
     });
@@ -317,7 +401,7 @@ useClickedProjectEffect(val => {
   }
   
   document.querySelectorAll('[data-landmark]').forEach(el => {
-    const ignoreItems = disabledLandmarksOnProjects[val];
+    const ignoreItems = disabledLandmarksOnProjects[val.name];
     if (!ignoreItems) return el.style.display = '';
     console.log(el.dataset.landmark);
     if (ignoreItems.includes(el.dataset.landmark)) {
@@ -328,12 +412,9 @@ useClickedProjectEffect(val => {
 
 
 useClickedProjectEffect(val => {
+  const activeProject = document.querySelector(`.master.communiti[data-project="${val.name}"]`);
 
-  console.log('clicked Project', val);
-  const activeProject = document.querySelector(`[data-project="${val}"]`);
-
-  console.log(activeProject);
-  if (!val) {
+  if (!val.name) {
     document.querySelectorAll('.master.communiti').forEach(el => {
       el.classList.remove('shadowed');
     });
@@ -350,21 +431,32 @@ useClickedProjectEffect(val => {
 
 
 
-setClickedProject('');
+setClickedProject({
+  ...clickedProject(),
+  name: ''
+});
 
 
 const [ activeInnerRoute, setActiveInnerRoute, useActiveInnerRouteEffect ] = useState(null);
 
 document.body.addEventListener('click',function(evt){
   const target = evt.target.closest('[data-project]');
-  if (target && target.dataset.project === clickedProject()) return;
+  if (target && target.dataset.project === clickedProject().name) return;
   if (evt.target.closest('[data-landmark]')) return;
   if (!target) {
-    setClickedProject('');
+    setClickedProject({
+      ...clickedProject(),
+      name: '',
+      element: null,
+    });
     setActiveInnerRoute(null);
     return;
   }
-  setClickedProject(target.dataset.project);
+  setClickedProject({
+    ...clickedProject(),
+      name: target.dataset.project,
+      element: target
+  });
 
   console.log(target);
 });
@@ -406,7 +498,7 @@ document.querySelectorAll('[data-landmark]').forEach(el => {
 
   el.addEventListener('click', () => {
 
-    const innerRouteOfClickedProject = document.querySelector(`[data-project-routes="${clickedProject()}"] [data-inner-route][class*="${el.dataset.landmark}"]`);
+    const innerRouteOfClickedProject = document.querySelector(`[data-project-routes="${clickedProject().name}"] [data-inner-route][class*="${el.dataset.landmark}"]`);
 
     if (!innerRouteOfClickedProject) {
       setActiveInnerRoute(null);

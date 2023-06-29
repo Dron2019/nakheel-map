@@ -22,7 +22,7 @@
     }
 }
 .windows {
-    .master.communiti.active {
+    .master.communiti.active[data-project] {
         &>g>[fill],
         &>[fill] {
             animation : fillOpacityPulse 3s ease-out infinite;
@@ -32,6 +32,10 @@
             // animation : strokePulse 3s ease-out infinite;
         }
     }
+}
+
+[data-project] {
+    cursor: pointer;
 }
 
 @keyframes fillOpacityPulse {
@@ -69,7 +73,7 @@
     cursor: pointer;
     transition: .25s ease-out;
     &.shadowed {
-        opacity: 0.5;
+        opacity: 0.15;
     }
     &.inverted {
         [fill="#F5F1E8"] {
