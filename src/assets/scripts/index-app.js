@@ -331,10 +331,10 @@ useClickedProjectEffect(val => {
 
   console.log(val);
 
-  if (val.element) {
+  if (val.name) {
     document.querySelectorAll('[data-project]').forEach(el => {
-      if (val.element === el || el.classList.contains('communiti')) return el.style.opacity = '';
-      if (val.element !== el) return el.style.opacity = '0.2';
+      if (el.classList.contains('communiti')) return el.style.opacity = '';
+      if (val.element !== el) return el.style.opacity = '0';
     })
   } else {
     document.querySelectorAll('[data-project]').forEach(el => {
@@ -455,7 +455,7 @@ document.body.addEventListener('click',function(evt){
   setClickedProject({
     ...clickedProject(),
       name: target.dataset.project,
-      element: target
+      element: null
   });
 
   console.log(target);
