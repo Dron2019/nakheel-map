@@ -3,6 +3,8 @@ import customSelecthandler from './modules/selectHandler';
 import useState from './modules/hooks/useState';
 import svgSwitcher from './modules/svgSwitcher';
 
+import 'current-device';
+
 const a = customSelecthandler('[data-select]');
 
 
@@ -27,7 +29,7 @@ useFilterEffect((state) => {
         return;
       }
       if (!filterValue) {
-        validCount++;
+        // validCount++;
         fieldsCountForValidation++;
         return;
       }
@@ -45,6 +47,12 @@ useFilterEffect((state) => {
     
   })
 })  
+
+setFilter(Array.from(document.querySelectorAll('select[data-select]')).reduce((acc,el) => {
+  acc[el.name] = '';
+  return acc;
+}, {}))
+
 
 a.onChange(({ target }) => {
   console.log('efefef change', target.dataset.select, target.name);
@@ -239,9 +247,9 @@ document.querySelector('[data-zone-highlighter]').addEventListener('change', fun
   }
 });
 
-if (window.matchMedia('(max-width: 1920px').matches) {
-  document.querySelector('.map>svg').setAttribute('preserveAspectRatio', 'xMaxYMin slice');
-}
+// if (window.matchMedia('(max-width: 1920px').matches) {
+//   document.querySelector('.map>svg').setAttribute('preserveAspectRatio', 'xMaxYMin slice');
+// }
 
 
 
@@ -278,6 +286,36 @@ useClickedProjectEffect(val => {
       el.classList.add('inverted');
     } else {
       el.classList.remove('inverted');
+    }
+  });
+});
+
+
+const disabledLandmarksOnProjects = {
+  CanalFrontResidence: ['Dubai Canal'],
+  'Palm Jumeirah': ['The View at Palm', 'The Palm Monorail', 'Nakheel Sales Center'],
+  'Nakheel Marinas Dubai Islands': ['Nakheel Marinas Dubai Islands'],
+  'Dubai Islands': ['Nakheel Marinas Dubai Islands']
+}
+
+/**disable some individual landmarks on some clicked projects */
+useClickedProjectEffect(val => {
+
+  
+
+  if (!val){
+    document.querySelectorAll('[data-landmark]').forEach(el => {
+      el.style.display = '';
+    });
+    return;
+  }
+  
+  document.querySelectorAll('[data-landmark]').forEach(el => {
+    const ignoreItems = disabledLandmarksOnProjects[val];
+    if (!ignoreItems) return el.style.display = '';
+    console.log(el.dataset.landmark);
+    if (ignoreItems.includes(el.dataset.landmark)) {
+      el.style.display = 'none';
     }
   });
 });
