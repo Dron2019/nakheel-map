@@ -131,11 +131,11 @@ document.body.addEventListener('dblclick', function(evt) {
   if (!data) return;
 
 
-  popup.querySelector('[data-gallery-link]').setAttribute('href', data.gallery_link || '#');
-  popup.querySelector('[data-video-link]').setAttribute('href', data.video_link || '#');
-  popup.querySelector('[data-payment-plan-link]').setAttribute('href', data.payment_plan || '#');
-  popup.querySelector('[data-floor-plan-link]').setAttribute('href', data.floor_plans || '#');
-  popup.querySelector('[data-material-board-specification]').setAttribute('href', data.material_board_specification_link || '#');
+  popup.querySelector('[data-gallery-link]').setAttribute('data-url', data.gallery_link || '#');
+  popup.querySelector('[data-video-link]').setAttribute('data-url', data.video_link || '#');
+  popup.querySelector('[data-payment-plan-link]').setAttribute('data-url', data.payment_plan || '#');
+  popup.querySelector('[data-floor-plan-link]').setAttribute('data-url', data.floor_plans || '#');
+  popup.querySelector('[data-material-board-specification]').setAttribute('data-url', data.material_board_specification_link || '#');
 
   popup.querySelector('.swiper-wrapper').innerHTML = data.images.map(el => `
     <img src="${el}" class="swiper-slide">

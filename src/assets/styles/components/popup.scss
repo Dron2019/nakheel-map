@@ -120,6 +120,7 @@
         color: #001030;
         margin-bottom: 4px;
         text-transform: uppercase;
+        [data-url="#"],
         a[href="#"] {
           display: none;
         }

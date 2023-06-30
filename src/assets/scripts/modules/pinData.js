@@ -42,6 +42,17 @@ export const pinData = {
       pdf_url: `./static/district-11.pdf`,
     },
   
+    como_residence: {
+      images: ['./assets/images/district-11/qr.jpg', './assets/images/district-11/image.jpg'],
+      qr_url: './assets/images/district-11/qr.jpg',
+      title: 'Como Residence',
+      text: 'Harnessing the beauty of nature, Nakheel transforms land and water into innovative landmark destinations',
+      gallery_link: '',
+      video_link: '',
+      payment_plan: './static/como-residence/Como Payment Plan.pdf',
+      floor_plans: './static/como-residence/COMO Residences_Floor Plans.pdf',
+      material_board_specification_link: './static/como-residence/Como Residences MaterialBoard.pdf' 
+    },
     nakheeeeel: {
       images: ['./assets/images/district-11/qr.jpg', './assets/images/district-11/image.jpg'],
       qr_url: './assets/images/district-11/qr.jpg',
