@@ -49,9 +49,9 @@ export const pinData = {
       text: 'Lorem Ipsum',
       gallery_link: 'https://google.com/',
       video_link: 'https://google.com/',
-      payment_plan: 'https://google.com/',
+      payment_plan: '',
       floor_plans: 'https://google.com/',
-      material_board_specification_link: 'https://google.com/' 
+      material_board_specification_link: '' 
   
     }
   };

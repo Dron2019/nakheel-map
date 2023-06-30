@@ -120,6 +120,9 @@
         color: #001030;
         margin-bottom: 4px;
         text-transform: uppercase;
+        a[href="#"] {
+          display: none;
+        }
         @include to(1920px) {
          font-size: 24px; 
         }

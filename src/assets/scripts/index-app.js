@@ -121,7 +121,7 @@ document.body.addEventListener('click', function(evt) {
 
   target.closest('.popup').classList.remove('visible');
 });
-document.body.addEventListener('click', function(evt) {
+document.body.addEventListener('dblclick', function(evt) {
   const target = evt.target.closest('g[data-id]');
   if (!target) return;
 
@@ -131,11 +131,11 @@ document.body.addEventListener('click', function(evt) {
   if (!data) return;
 
 
-  popup.querySelector('[data-gallery-link]').setAttribute('href', data.gallery_link);
-  popup.querySelector('[data-video-link]').setAttribute('href', data.video_link);
-  popup.querySelector('[data-payment-plan-link]').setAttribute('href', data.payment_plan);
-  popup.querySelector('[data-floor-plan-link]').setAttribute('href', data.floor_plans);
-  popup.querySelector('[data-material-board-specification]').setAttribute('href', data.material_board_specification_link);
+  popup.querySelector('[data-gallery-link]').setAttribute('href', data.gallery_link || '#');
+  popup.querySelector('[data-video-link]').setAttribute('href', data.video_link || '#');
+  popup.querySelector('[data-payment-plan-link]').setAttribute('href', data.payment_plan || '#');
+  popup.querySelector('[data-floor-plan-link]').setAttribute('href', data.floor_plans || '#');
+  popup.querySelector('[data-material-board-specification]').setAttribute('href', data.material_board_specification_link || '#');
 
   popup.querySelector('.swiper-wrapper').innerHTML = data.images.map(el => `
     <img src="${el}" class="swiper-slide">
@@ -428,6 +428,7 @@ document.querySelectorAll('[data-landmark]').forEach(el => {
 
     const innerRouteOfClickedProject = document.querySelector(`[data-project-routes="${clickedProject().name}"] [data-inner-route][class*="${el.dataset.landmark}"]`);
 
+    console.log(innerRouteOfClickedProject);
     if (!innerRouteOfClickedProject) {
       setActiveInnerRoute(null);
       return;
