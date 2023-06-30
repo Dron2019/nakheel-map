@@ -1,5 +1,5 @@
 export default function useState(initialValue) {
-    let value = initialValue;
+    let value = typeof initialValue === 'function' ? initialValue() : initialValue;
     const subscribers = [];
   
     function setValue(newValue) {

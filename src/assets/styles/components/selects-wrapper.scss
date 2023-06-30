@@ -8,6 +8,7 @@
     align-items: center;
     width: 100%;
     .form-switch,
+    .dropdown~.dropdown,
     .custom-select-container~.custom-select-container {
         margin-left: 24px;
     }

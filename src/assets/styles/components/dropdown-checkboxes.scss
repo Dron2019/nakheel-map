@@ -1,0 +1,124 @@
+.dropdown {
+    position: relative;
+    color: #fff;
+    width: 12.7vw;
+    cursor: pointer;
+
+    --option-side-p: 0px;
+
+    .dropdown-list {
+        padding: 20px;
+        //   background: #fff;
+        position: absolute;
+        top: 100%;
+        left: 2px;
+        right: 2px;
+        background: rgba(255, 255, 255, 0.08);
+        @at-root .windows & {
+            backdrop-filter: blur(40px);
+        }
+        @at-root .macos & {
+            background: rgba(182, 166, 166, 0.45);
+            
+        }
+        border: 1px solid #fff;
+        border-radius: 8px;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: .25s ease-out;
+        max-height: 66vh;
+        overflow-y: scroll;
+        width: max-content;
+    }
+
+    .dropdown-option {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 12px var(--option-side-p);
+        opacity: 0;
+        transition: opacity .15s ease-in-out;
+        position: relative;
+        cursor: pointer;
+        font-size: 20px;
+        &--first {
+            padding-left: 0;
+            font-size: 16px;
+        }
+    }
+
+    .dropdown-label {
+        font-family: 'Nakheel-Text';
+        border-radius: 8px;
+        @include customSelectBg;
+        background: rgba(255, 255, 255, 0.08);
+        @at-root .windows & {
+            backdrop-filter: blur(40px);
+        }
+        @at-root .macos & {
+            background: rgba(182, 166, 166, 0.45);
+            
+        }
+        padding: 1.1vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #fff;
+        font-size: 1.08vw;
+
+        &:after {
+            content: '▼';
+            float: right;
+        }
+    }
+
+    &.on {
+        .dropdown-list {
+            
+            opacity: 1;
+            pointer-events: all;
+
+            .dropdown-option {
+                opacity: 1;
+                transition-delay: .2s;
+            }
+        }
+
+        .dropdown-label:after {
+            content: '▲';
+        }
+    }
+
+    [type="checkbox"] {
+        position: relative;
+        margin-right: 14px;
+        background: transparent;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border-color: #fff;
+        border-width: 2px;
+        transition: .25s ease-out;
+        flex-shrink: 0;
+        &:checked {
+        }
+    }
+
+    .dropdown-option-checked-circle {
+         width: 10px;
+         height: 10px;
+         background-color: #fff;
+         border-radius: 50%;
+         position: absolute;
+         left: calc(5px + var(--option-side-p));
+         top: 50%;
+         transform: translateY(-50%);
+         opacity: 0;
+         transition: .25s ease-out;
+    }
+    input:checked~.dropdown-option-checked-circle {
+        opacity: 1;
+    }
+}

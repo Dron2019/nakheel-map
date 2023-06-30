@@ -1,23 +1,28 @@
 import PDFObject from 'pdfobject';
-import customSelecthandler from './modules/selectHandler';
 import useState from './modules/hooks/useState';
 import svgSwitcher from './modules/svgSwitcher';
 import Swiper, { Pagination } from 'swiper';
 
 import 'current-device';
-import { gsap } from 'gsap';
-
-const a = customSelecthandler('[data-select]');
-
-
+import { pinData } from './modules/pinData';
 
 svgSwitcher();
 
-const [ filter, setFilter, useFilterEffect ] = useState({});
+const [ filter, setFilter, useFilterEffect ] = useState(() => {
+  const state = {};
+
+  document.querySelectorAll('[data-select]').forEach(input => {
+    const key = input.getAttribute('name');
+    state[key] = new Set();
+  })
+
+  return state;
+
+
+});
 
 useFilterEffect((state) => {
 
-  console.log(state);
   let elementsToHide = [];
   let elementsToShow = []
 
@@ -27,25 +32,28 @@ useFilterEffect((state) => {
 
     Object.entries(state).forEach(([ filterKey, filterValue ]) => {
       const datasetValue = elementForFilter.dataset[`filter_${filterKey}`];
-      if (!datasetValue) {
+
+
+      
+      if (filterKey === 'infrastructure' && filterValue.size === 0 && elementForFilter.dataset.filter_infrastructure) {
+        fieldsCountForValidation++;
+        return;
+      }
+
+      if (filterValue.size === 0 || !datasetValue) {
         validCount++;
         fieldsCountForValidation++;
         return;
       }
-      if (!filterValue) {
-        validCount++;
+      if (!filterValue.has(datasetValue)) {
+        
         fieldsCountForValidation++;
         return;
       }
-      if (datasetValue != filterValue) {
-        fieldsCountForValidation++;
-        return;
-      }
+
       validCount++;
       fieldsCountForValidation++;
     });
-    console.log('validCount',validCount,
-      'fieldsCountForValidation', fieldsCountForValidation);
 
     elementForFilter.style.display =  validCount == fieldsCountForValidation ? '' :  'none';
 
@@ -55,6 +63,8 @@ useFilterEffect((state) => {
       elementsToHide.push(elementForFilter);
     }    
   });
+
+
 
   // gsap.to(elementsToShow, {
   //   display: 1
@@ -66,83 +76,27 @@ useFilterEffect((state) => {
 
 })  
 
-// setFilter(Array.from(document.querySelectorAll('select[data-select]')).reduce((acc,el) => {
-//   acc[el.name] = '';
-//   return acc;
-// }, {}))
+setFilter({
+  ...filter()
+})
 
+document.body.addEventListener('change', (evt) => {
+  const target = evt.target.closest('[data-select]');
+  if (!target) return;
+  const key = target.getAttribute('name');
+  const value = target.value;
+  
+  const currentFilterState = filter()[key];
 
-a.onChange(({ target }) => {
-  console.log('efefef change', target.dataset.select, target.name);
+  target.checked ? currentFilterState.add(value) : currentFilterState.delete(value);
   setFilter({
     ...filter(),
-    [target.name]: target.value,
+    [key] : currentFilterState
   })
-});
-
-
-
-
+})
 
 
 let pdfViewer = null;
-const pinData = {
-  como_residence: {
-    title: 'Como Residences ',
-    text: `Como Residences blends the very best of the world’s most luxurious destinations into one monumental, architectural landmark.`,
-    image_url: './assets/images/como-residence/image.jpg',
-    qr_url: './assets/images/como-residence/qr.jpg',
-    pdf_text: 'Como Residences presentation',
-    pdf_url: `./static/como_residence.pdf`,
-  },
-  palm_beach_towers: {
-    title: 'Palm Beach Towers ',
-    text: `Palm Beach Towers 3 is an amalgam of
-    style and luxury that inspires a fresh
-    perspective; where each day the
-    sounds of the waves are the backdrop
-    to a life immersed in the best the city
-    has to offer.`,
-    image_url: './assets/images/palm-beach-towers/image.jpg',
-    qr_url: './assets/images/palm-beach-towers/qr.jpg',
-    pdf_text: 'Palm Beach Towers presentation',
-    pdf_url: `./static/palm-beach-tower.pdf`,
-  },
-  dubai_islands: {
-    title: 'Dubai Islands',
-    text: `Welcome to Dubai Islands, where opportunity
-    flows. As the spectacular vision of the Nakheel
-    Group, Dubai Islands rises from the sea,
-    redefining the horizon of Dubai and inviting you
-    to step across the bridge, towards a future of
-    possibilities.`,
-    image_url: './assets/images/dubai-islands/image.jpg',
-    qr_url: './assets/images/dubai-islands/qr.jpg',
-    pdf_text: 'Dubai Islands presentation',
-    pdf_url: `./static/dubai-islands.pdf`,
-  },
-  district_11: {
-    title: 'District 11',
-    text: `With exceptional access to Downtown Dubai, District 11 Opal Gardens enlivens the spirit with verdant green spaces encircling a stunning crystal lagoon. Secure and gated, the development will feature well-crafted villas and townhouses surrounded by lush landscaping and over 5–kilometers of cycling and pedestrian trails.`,
-    image_url: './assets/images/district-11/image.jpg',
-    qr_url: './assets/images/district-11/qr.jpg',
-    pdf_text: 'District 11 presentation',
-    pdf_url: `./static/district-11.pdf`,
-  },
-
-  nakheeeeel: {
-    images: ['./assets/images/district-11/qr.jpg', './assets/images/district-11/image.jpg'],
-    qr_url: './assets/images/district-11/qr.jpg',
-    title: 'Nakheeltitle',
-    text: 'Lorem Ipsum',
-    gallery_link: 'https://google.com/',
-    video_link: 'https://google.com/',
-    payment_plan: 'https://google.com/',
-    floor_plans: 'https://google.com/',
-    material_board_specification_link: 'https://google.com/' 
-
-  }
-};
 
 let timeoutClosing = 0;
 
@@ -269,10 +223,6 @@ document.body.addEventListener('click', function(evt) {
   //   supportRedirect:true,
   // });
 
-  console.log();
-  // popup.querySelector('iframe').src = target.dataset.url;
-
-  // popup.querySelector('iframe').contentWindow.location.reload();
   popup.querySelector('.popup2__title').textContent = target.dataset.text;
   popup.classList.add('visible');
 });
@@ -295,13 +245,9 @@ function addTimeout() {
   timeoutClosing = setTimeout(closePopups, 1000 * 120);
 }
 
-window.addEventListener('myevent', function(evt) {
-  console.log('EVENT');
-});
 
 document.querySelector('[data-zone-highlighter]').addEventListener('change', function(evt) {
   this.classList.toggle('active');
-  console.log('efefefegreswgh e tfew tgesw gfes tgfesw ', this.checked);
   if (this.checked) {
     document.querySelectorAll('[class*="master communiti"]').forEach(el => el.classList.add('active'));
   } else {
@@ -315,21 +261,12 @@ if (document.querySelector('[data-zone-highlighter]').checked) {
   document.querySelectorAll('[class*="master communiti"]').forEach(el => el.classList.remove('active'));
 }
 
-// if (window.matchMedia('(max-width: 1920px').matches) {
-//   document.querySelector('.map>svg').setAttribute('preserveAspectRatio', 'xMaxYMin slice');
-// }
-
-
-
-
 const [ clickedProject, setClickedProject, useClickedProjectEffect ] = useState({
   name: '',
   element: null
 });
 
 useClickedProjectEffect(val => {
-
-  console.log(val);
 
   if (val.name) {
     document.querySelectorAll('[data-project]').forEach(el => {
@@ -350,11 +287,6 @@ useClickedProjectEffect(val => {
     document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = 0);
     document.querySelectorAll('[data-filter_infrastructure]').forEach(el => el.style.opacity = '');
   }
-
-
-
-
-  // console.log(val);
 });
 useClickedProjectEffect(val => {
 
@@ -403,7 +335,6 @@ useClickedProjectEffect(val => {
   document.querySelectorAll('[data-landmark]').forEach(el => {
     const ignoreItems = disabledLandmarksOnProjects[val.name];
     if (!ignoreItems) return el.style.display = '';
-    console.log(el.dataset.landmark);
     if (ignoreItems.includes(el.dataset.landmark)) {
       el.style.display = 'none';
     }
@@ -458,14 +389,12 @@ document.body.addEventListener('click',function(evt){
       element: target
   });
 
-  console.log(target);
 });
 
 
 
 
 useActiveInnerRouteEffect(val => {
-  console.log(val);
   document.querySelectorAll('.active[data-inner-route]').forEach(el => {
     el.classList.remove('active');
   });
@@ -482,7 +411,6 @@ useActiveInnerRouteEffect(val => {
         el.classList.add('shadowed');
       }
     })
-    console.log(activeLandMark);
     
     simulatePathDrawing(val.querySelector('.Path'));
     return;
@@ -506,26 +434,15 @@ document.querySelectorAll('[data-landmark]').forEach(el => {
     }
     
     setActiveInnerRoute(innerRouteOfClickedProject);
-
-
-
-    console.log('[data-landmark]click');
-  })
-  el.addEventListener('mouseenter', () => {
-    console.log('[data-landmark]mouseenter');
-  })
-  el.addEventListener('mouseleave', () => {
-    console.log('[data-landmark]mouseleave');
   })
 });
 
 
 
 function simulatePathDrawing(path, strokeWidth = "3") {
-  // var path = document.querySelector('.squiggle-animated path');
+  
   var length = path.getTotalLength();
 
-  console.log(length);
   // Clear any previous transition
   path.style.transition = path.style.WebkitTransition = "none";
   // Set up the starting positions
@@ -539,6 +456,25 @@ function simulatePathDrawing(path, strokeWidth = "3") {
     "stroke-dashoffset 1.5s ease-in-out";
   // Go!
   path.style.strokeDashoffset = "0";
-  // path.style.strokeWidth = strokeWidth;
-  // path.style.stroke = "#F7F7F7";
 }
+
+
+document.body.addEventListener('click', (evt) => {
+  const target = evt.target.closest('[data-checkbox-dropdown]');
+  if (target) {
+
+    document.querySelectorAll('.on[data-checkbox-dropdown]').forEach(el => {
+      if (el === target) return;
+      el.classList.remove('on')
+    });
+    return;
+  }
+
+  document.querySelectorAll('.on[data-checkbox-dropdown]').forEach(el => el.classList.remove('on'));
+
+})
+
+document.querySelectorAll('[data-checkbox-dropdown]').forEach(el => {
+  const head = el.querySelector('.dropdown-label');
+  head.addEventListener('click', () => el.classList.toggle('on'));
+})
