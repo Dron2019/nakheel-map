@@ -43,19 +43,19 @@ export const pinData = {
     },
   
     como_residence: {
-      images: ['./assets/images/district-11/qr.jpg', './assets/images/district-11/image.jpg'],
-      qr_url: './assets/images/district-11/qr.jpg',
+      images: ['./static/como-residence/title.jpg'],
+      qr_url: './static/como-residence/qr.jpg',
       title: 'Como Residence',
       text: 'Harnessing the beauty of nature, Nakheel transforms land and water into innovative landmark destinations',
-      gallery_link: '',
-      video_link: '',
+      gallery_link: './static/como-residence/gallery-page.html',
+      video_link: './static/como-residence/Como_Residences_Animation.mp4',
       payment_plan: './static/como-residence/Como Payment Plan.pdf',
       floor_plans: './static/como-residence/COMO Residences_Floor Plans.pdf',
       material_board_specification_link: './static/como-residence/Como Residences MaterialBoard.pdf' 
     },
     nakheeeeel: {
-      images: ['./assets/images/district-11/qr.jpg', './assets/images/district-11/image.jpg'],
-      qr_url: './assets/images/district-11/qr.jpg',
+      images: ['./static/como-residence/gallery/644162a1d79428339771039d_COMO Residences_Moodboard_B2C_Interni_Rev02-011.webp'],
+      qr_url: './static/como-residence/qr.jpg',
       title: 'Nakheeltitle',
       text: 'Lorem Ipsum',
       gallery_link: 'https://google.com/',

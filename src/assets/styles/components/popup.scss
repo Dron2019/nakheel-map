@@ -52,9 +52,8 @@
         object-position: center;
     }
     &__qr {
-      // border-radius: 40px;
-      width: 270px;
-      height: 270px;
+      width: 150px;
+      height: 150px;
       flex-shrink: 0;
       position: absolute;
       z-index: 2;
@@ -62,6 +61,7 @@
       top: calc(var(--width) / 16 * 9);
       border-radius: 11.625px;
       transform: translateY(-50%);
+      object-fit: contain;
       @include to(1920px) {
         width: 125px;
         height: 125px; 
@@ -120,6 +120,7 @@
         color: #001030;
         margin-bottom: 4px;
         text-transform: uppercase;
+        row-gap: 16px;
         [data-url="#"],
         a[href="#"] {
           display: none;

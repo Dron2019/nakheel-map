@@ -112,7 +112,8 @@ const popupSlider = new Swiper('.popup .swiper-container', {
 });
 
 document.body.addEventListener('click', function(evt) {
-  if (evt.target.closest('.popup') === null) {
+  console.log(evt.target);
+  if (evt.target.closest('.popup') === null && evt.target.closest('.popup2') === null) {
     document.querySelector('.popup').classList.remove('visible');
     return;
   }
