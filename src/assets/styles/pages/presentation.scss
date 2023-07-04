@@ -1,6 +1,6 @@
 .presentation {
     &-wrap {
-        height: 100vh;
+        height: 100%;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -21,20 +21,26 @@
     }
     &-btn-wrap {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         gap: 24px;
         position: relative;
         z-index: 1;
+        width: 100%;
     }
     &-btn-item {
-        width: calc(50% - 24px);
+        // width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        &:nth-child(odd) {
-            justify-content: flex-end;
+        &:first-child {
+            margin-right: 40px;
+        }
 
+        &:nth-child(2) {
+            pointer-events: none;
+            display: none;
         }
     }
     &-btn {
@@ -61,16 +67,17 @@
         transition: all ease-in-out 0.3s;
         position: relative;
 
-        &.is-active {
-            opacity: 0;
-            pointer-events: none;
+        &.hidden {
+            display: none;
         }
+
+       
 
     }
 
     &-btn-qr {
         padding: 11px;
-        margin: 0 10px;
+        margin-bottom: 18px;
         width: 64px;
         height: 64px;
         background: rgba(255, 255, 255, 0.1);
@@ -81,22 +88,12 @@
         justify-content: center;
         position: relative;
         z-index: 1;
+        display: none;
 
-
-
-        &.close {
-            position: relative;
-            z-index: 10000;
-            .presentation-btn-qr-close {
-                display: block;
-                
-            }
-
-            .presentation-btn-qr-main {
-                display: none;
-
-            }
+        &.hidden {
+            display: none;
         }
+
 
         .presentation-btn-qr-main {
             display: block;
@@ -105,12 +102,27 @@
 
         }
 
-        .presentation-btn-qr-close {
-            display: none;
-            width: 28px;
-            height: 28px;
 
-        }
+
+    }
+
+    &-btn-popup-qr-close {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        padding: 11px;
+        margin-bottom: 18px;
+        width: 64px;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(6px);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
 
     }
 
@@ -121,11 +133,11 @@
         transform: translate(-50%,-50%);
         width: 0;
         opacity: 0;
-        pointer-events: none;
         padding: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all ease-in-out 0.4s;
 
         img {
             width: 30%;

@@ -3,7 +3,6 @@ const buttonsRef = document.querySelectorAll('.presentation-btn');
 const links = [
   'https://www.comobynakheel.com/emotions/home',
   './web/viewer.html?file=https://nakheelmap.com/static/dubai-islands.pdf',
-  './web/viewer.html?file=https://nakheelmap.com/static/palm-beach-tower.pdf',
   'https://tecma-demo.com/clients/d1west/emotions',
 ];
 
