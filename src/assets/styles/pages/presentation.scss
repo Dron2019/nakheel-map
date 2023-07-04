@@ -21,7 +21,7 @@
     }
     &-btn-wrap {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
         gap: 24px;
         position: relative;
@@ -36,6 +36,26 @@
 
         &:first-child {
             margin-right: 40px;
+
+            .presentation-btn-qr {
+                display: flex;
+
+                &.hidden {
+                    display: none;
+                }
+            }
+        }
+
+        &:last-child {
+
+            .presentation-btn-qr {
+                display: flex;
+
+                &.hidden {
+                    display: none;
+                }
+            }
+            
         }
 
         &:nth-child(2) {
@@ -93,7 +113,6 @@
         &.hidden {
             display: none;
         }
-
 
         .presentation-btn-qr-main {
             display: block;
