@@ -318,7 +318,8 @@ const disabledLandmarksOnProjects = {
   CanalFrontResidence: ['Dubai Canal'],
   'Palm Jumeirah': ['The View at Palm', 'The Palm Monorail', 'Nakheel Sales Center'],
   'Nakheel Marinas Dubai Islands': ['Nakheel Marinas Dubai Islands'],
-  'Dubai Islands': ['Nakheel Marinas Dubai Islands']
+  'Dubai Islands': ['Nakheel Marinas Dubai Islands'],
+  'Palm Beach Towers': ['The Palm Monorail',]
 }
 
 /**disable some individual landmarks on some clicked projects */
