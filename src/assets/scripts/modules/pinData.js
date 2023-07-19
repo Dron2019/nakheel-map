@@ -53,6 +53,17 @@ export const pinData = {
       floor_plans: './static/como-residence/COMO Residences_Floor Plans.pdf',
       material_board_specification_link: './static/como-residence/Como Residences MaterialBoard.pdf' 
     },
+    rixos_dubai_islands: {
+      images: ['./static/rixos_dubai_islands/title.jpg'],
+      qr_url: './static/rixos_dubai_islands/qr.jpg',
+      title: 'Rixos Dubai Islands Hotel & Residences',
+      text: 'Rixos brings its signature all-inclusive, all-exclusive luxury lifestyle to Dubai Islands. Immerse yourself in contemporary waterfront living within this refined residential setting. Dive into a world of adventure and embrace a life of joy and fulfilment, where family-friendly activities naturally become part of every day.',
+      gallery_link: './static/rixos_dubai_islands/gallery-page.html',
+      // video_link: './static/como-residence/Como_Residences_Animation.mp4',
+      // payment_plan: './static/como-residence/Como Payment Plan.pdf',
+      // floor_plans: './static/como-residence/COMO Residences_Floor Plans.pdf',
+      // material_board_specification_link: './static/como-residence/Como Residences MaterialBoard.pdf' 
+    },
     nakheeeeel: {
       images: ['./static/como-residence/gallery/644162a1d79428339771039d_COMO Residences_Moodboard_B2C_Interni_Rev02-011.webp'],
       qr_url: './static/como-residence/qr.jpg',
