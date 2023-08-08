@@ -316,6 +316,7 @@ useClickedProjectEffect(val => {
 
 const disabledLandmarksOnProjects = {
   CanalFrontResidence: ['Dubai Canal'],
+  'veneto': ['The Palm Monorail'],
   'Palm Jumeirah': ['The View at Palm', 'The Palm Monorail', 'Nakheel Sales Center'],
   'Nakheel Marinas Dubai Islands': ['Nakheel Marinas Dubai Islands'],
   'Dubai Islands': ['Nakheel Marinas Dubai Islands'],
