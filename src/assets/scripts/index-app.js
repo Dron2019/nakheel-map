@@ -188,15 +188,32 @@ document.body.addEventListener('click', function(evt) {
 
   const isIOS = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
 
+  console.log(target.dataset.url.match(/\.pdf/));
+
   if (true) {
   // if (isIOS) {
     document.querySelector('[data-pdf]').innerHTML = '';
-    document.querySelector('[data-pdf]').insertAdjacentHTML(
-      'afterbegin',
-      `
-      <iframe src="${target.dataset.url}"></iframe>
-    `,
-    );
+
+    if (target.dataset.url.match(/\.pdf/) && isIOS) {
+      document.querySelector('[data-pdf]').insertAdjacentHTML(
+        'afterbegin',
+        `
+        <iframe src="${window.location.origin}${window.location.pathname}static/web/viewer.html?file=${window.location.origin}${window.location.pathname}${target.dataset.url.replace(
+          './',
+          '',
+        )}"></iframe>
+      `,
+      );
+      
+    } else {
+
+      document.querySelector('[data-pdf]').insertAdjacentHTML(
+        'afterbegin',
+        `
+        <iframe src="${target.dataset.url}"></iframe>
+      `,
+      );
+    }
   } else {
     PDFObject.embed(target.dataset.url, '[data-pdf]', {
       forceIframe: true,
