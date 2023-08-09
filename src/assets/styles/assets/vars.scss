@@ -28,6 +28,10 @@ $gold: #CFA46E;
   --side-fields: 2.9vw;
 }
 
+.tablet {
+  --side-fields: 20px;
+}
+
 @media screen and (max-width: 1440px){
   :root {
     --header-h: 90px;

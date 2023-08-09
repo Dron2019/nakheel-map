@@ -51,3 +51,14 @@
         height: auto;
     }
 }
+
+.tablet {
+    .selects-wrapper {
+        .dropdown~.dropdown {
+            margin-left: 12px;
+        }
+        &__logo>svg {
+            width: 125px;
+        }
+    }
+}

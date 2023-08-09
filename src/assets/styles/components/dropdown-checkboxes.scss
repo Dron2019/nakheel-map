@@ -122,3 +122,24 @@
         opacity: 1;
     }
 }
+
+.tablet {
+    .dropdown {
+        width: max-content;
+        &-list {
+            background: rgba(26, 41, 65,0.5);
+            padding: 12px;
+        }
+        &-option {
+            font-size: 14px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+        .dropdown-label {
+            font-size: 12px;
+            &:after {
+                margin-left: 4px;
+            }
+        }
+    }
+}
