@@ -112,7 +112,6 @@ const popupSlider = new Swiper('.popup .swiper-container', {
 });
 
 document.body.addEventListener('click', function(evt) {
-  console.log(evt.target);
   if (evt.target.closest('.popup') === null && evt.target.closest('.popup2') === null) {
     document.querySelector('.popup').classList.remove('visible');
     return;
@@ -189,15 +188,13 @@ document.body.addEventListener('click', function(evt) {
 
   const isIOS = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
 
-  if (isIOS) {
+  if (true) {
+  // if (isIOS) {
     document.querySelector('[data-pdf]').innerHTML = '';
     document.querySelector('[data-pdf]').insertAdjacentHTML(
       'afterbegin',
       `
-      <iframe src="./web/viewer.html?file=${window.location.origin}/${target.dataset.url.replace(
-        './',
-        '',
-      )}"></iframe>
+      <iframe src="${target.dataset.url}"></iframe>
     `,
     );
   } else {
