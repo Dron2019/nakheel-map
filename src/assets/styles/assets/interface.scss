@@ -14,6 +14,12 @@
 		flex-shrink: 0;
 	}
 }
+
+.tablet {
+  .page__inner {
+    min-height: -webkit-fill-available;
+  }
+}
 .section-pading--top {
 	padding-top: 60px;
 }

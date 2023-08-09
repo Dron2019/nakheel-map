@@ -54,6 +54,15 @@
 
 .tablet {
     .selects-wrapper {
+
+        .form-switch {
+            margin-top: 7px;
+        }
+
+        .form-switch,
+        .dropdown {
+            align-self: flex-start;
+        }
         .dropdown~.dropdown {
             margin-left: 12px;
         }

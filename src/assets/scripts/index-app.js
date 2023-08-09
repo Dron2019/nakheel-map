@@ -282,13 +282,13 @@ useClickedProjectEffect(val => {
 
   if (val.name)  {
     document.body.classList.add('overlay');
-    document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = '');
-    document.querySelectorAll('[data-filter_infrastructure]').forEach(el => el.style.opacity = '0');
+    document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = '0');
+    // document.querySelectorAll('[data-filter_infrastructure]').forEach(el => el.style.opacity = '0');
     
   } else {
     document.body.classList.remove('overlay');
-    document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = 0);
-    document.querySelectorAll('[data-filter_infrastructure]').forEach(el => el.style.opacity = '');
+    // document.querySelectorAll('[data-img-overlay]').forEach(el => el.style.opacity = 0);
+    // document.querySelectorAll('[data-filter_infrastructure]').forEach(el => el.style.opacity = '');
   }
 });
 useClickedProjectEffect(val => {

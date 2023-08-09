@@ -7,7 +7,11 @@
 body {
   overflow: hidden;
 }
+body,
+.tablet {
+  height: -webkit-fill-available;
 
+}
 .map {
   width: calc(100%);
   // background-color: rebeccapurple;
@@ -38,7 +42,8 @@ body {
   .map {
     svg {
       width: auto;
-      height: 100vh;
+      max-width: 100vw;
+      height: -webkit-fill-available;
       margin-left: auto;
       margin-right: auto;
     }
@@ -49,10 +54,10 @@ body {
       top: -5px;
       width: calc(100% + 10px);
       height: calc(100% + 10px);
-      background-image: url('../images/map-dubai-vertical.jpg');
+      background-image: url('../images/map-blur.jpg');
       background-size: cover;
       background-repeat: no-repeat;
-      filter: blur(5px);
+      // filter: blur(5px);
       z-index: -1;
     }
   }
@@ -60,7 +65,7 @@ body {
   .overlay {
     .map {
       &:after {
-        filter: blur(5px) brightness(0.7);
+        // filter: blur(5px) brightness(0.7);
       }
     }
   }
